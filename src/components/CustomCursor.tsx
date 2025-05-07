@@ -38,15 +38,17 @@ const CustomCursor = () => {
 
   return (
     <>
-      <style jsx="true">{`
-        body {
-          cursor: none;
-        }
-        
-        a, button, [role="button"], [class*="btn"], [type="button"], [type="submit"] {
-          cursor: none;
-        }
-      `}</style>
+      <style>
+        {`
+          body {
+            cursor: none;
+          }
+          
+          a, button, [role="button"], [class*="btn"], [type="button"], [type="submit"] {
+            cursor: none;
+          }
+        `}
+      </style>
 
       <div
         className={`hidden sm:block fixed pointer-events-none z-50 mix-blend-difference transition-transform duration-150 ${isClicking ? 'scale-75' : ''}`}
