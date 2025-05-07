@@ -18,11 +18,10 @@ const HeroSection = () => {
     <section className="relative h-[90vh] sm:h-screen overflow-hidden">
       {/* Spline 3D Background using the provided embed code */}
       <div className="absolute inset-0 w-full h-full z-0">
-        <spline-viewer 
-          loading-anim-type="spinner-small-light" 
-          url="https://prod.spline.design/E1JnXeUPttEDoYtZ/scene.splinecode"
-          className="w-full h-full"
-        />
+        {/* Using dangerouslySetInnerHTML to properly render the custom element */}
+        <div dangerouslySetInnerHTML={{ 
+          __html: '<spline-viewer loading-anim-type="spinner-small-light" url="https://prod.spline.design/E1JnXeUPttEDoYtZ/scene.splinecode"></spline-viewer>'
+        }} className="w-full h-full" />
       </div>
       
       {/* Bottom overlay to hide Spline watermark */}
@@ -39,34 +38,44 @@ const HeroSection = () => {
               Advanced formula with natural ingredients to cleanse, refresh, and rejuvenate your skin. Developed by dermatologists specifically for men's skin.
             </p>
             <div className="flex flex-col sm:flex-row gap-4">
-              <Button className="btn-primary text-lg">Shop Now</Button>
-              <Button variant="outline" className="text-lg">Learn More</Button>
+              <Button 
+                size="lg" 
+                className="bg-manscara-black hover:bg-black text-white"
+                onClick={scrollToNextSection}
+              >
+                Shop Now
+              </Button>
+              <Button 
+                variant="outline" 
+                size="lg"
+              >
+                Learn More
+              </Button>
             </div>
-            <div className="mt-8 flex items-center">
-              <div className="flex -space-x-2">
-                {[1, 2, 3, 4].map((i) => (
-                  <div key={i} className="w-10 h-10 rounded-full bg-manscara-beige border border-white flex items-center justify-center text-xs font-semibold">
-                    {i}
-                  </div>
-                ))}
+            <div className="mt-8 grid grid-cols-3 gap-4">
+              <div>
+                <p className="text-2xl md:text-3xl font-bold">98%</p>
+                <p className="text-sm text-muted-foreground">Report Cleaner Skin</p>
               </div>
-              <p className="ml-4 text-sm text-muted-foreground">
-                <span className="font-semibold text-foreground">500+</span> 5-star reviews
-              </p>
+              <div>
+                <p className="text-2xl md:text-3xl font-bold">30+</p>
+                <p className="text-sm text-muted-foreground">Natural Ingredients</p>
+              </div>
+              <div>
+                <p className="text-2xl md:text-3xl font-bold">24h</p>
+                <p className="text-sm text-muted-foreground">Lasting Effect</p>
+              </div>
             </div>
           </div>
-          
-          {/* This second column is intentionally left empty to maintain layout */}
-          <div className="hidden md:block"></div>
         </div>
       </div>
       
-      {/* Down arrow button */}
-      <div className="absolute bottom-10 left-1/2 transform -translate-x-1/2 z-20 animate-bounce">
+      {/* Scroll Down Button */}
+      <div className="absolute bottom-8 left-1/2 transform -translate-x-1/2 z-20">
         <Button 
           variant="ghost" 
           size="icon" 
-          className="rounded-full bg-white/80 hover:bg-white shadow-md"
+          className="rounded-full animate-bounce"
           onClick={scrollToNextSection}
         >
           <ArrowDown className="h-6 w-6" />

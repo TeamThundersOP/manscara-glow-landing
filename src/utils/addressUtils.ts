@@ -1,3 +1,4 @@
+
 import { ShippingAddress, BillingAddress, PaymentMethod, OrderSummary, Order } from "@/types/checkout";
 import orderService from "@/services/orderService";
 
@@ -6,11 +7,11 @@ type AddressType = 'shipping' | 'billing';
 export interface Address {
   firstName: string;
   lastName: string;
-  address: string;
+  address: string; // House Number, building name
   city: string;
   state: string;
-  zipCode: string;
-  country: string;
+  zipCode: string; // Pin code
+  country: string; // Default: India
   phone: string;
 }
 
@@ -74,11 +75,11 @@ export const saveAddress = (shippingAddress: ShippingAddress) => {
   const address: Address = {
     firstName: shippingAddress.firstName,
     lastName: shippingAddress.lastName,
-    address: shippingAddress.address,
+    address: shippingAddress.address, // House Number, building name
     city: shippingAddress.city,
-    state: shippingAddress.region, // Map region to state
-    zipCode: shippingAddress.postalCode, // Map postalCode to zipCode
-    country: shippingAddress.country,
+    state: shippingAddress.region, // Road name, area, colony
+    zipCode: shippingAddress.postalCode, // Pin code
+    country: shippingAddress.country || 'India', // Default to India
     phone: shippingAddress.phone
   };
 
@@ -140,11 +141,11 @@ export const convertUserAddressToCheckoutFormat = (address: any) => {
   return {
     firstName: address.name?.split(' ')[0] || '',
     lastName: address.name?.split(' ')[1] || '',
-    address: address.street || '',
+    address: address.street || '', // House Number, building name
     city: address.city || '',
-    region: address.state || '',
-    postalCode: address.zipCode || '',
-    country: address.country || '',
+    region: address.state || '', // Road name, area, colony
+    postalCode: address.zipCode || '', // Pin code
+    country: address.country || 'India', // Default to India
     phone: address.phone || '',
   };
 };

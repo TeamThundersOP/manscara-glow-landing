@@ -55,6 +55,11 @@ const Navbar = () => {
     return () => window.removeEventListener("scroll", handleScroll);
   }, []);
 
+  // Close menu when route changes
+  useEffect(() => {
+    setIsMenuOpen(false);
+  }, [pathname]);
+
   const handleLogout = async () => {
     try {
       const response = await authService.logout();
@@ -231,47 +236,47 @@ const Navbar = () => {
             </Link>
           )}
 
-          {/* Mobile menu button */}
+          {/* Mobile menu button - improved with animation */}
           <Button
             variant="ghost"
             size="icon"
-            className="md:hidden"
+            className="md:hidden flex items-center justify-center"
             onClick={() => setIsMenuOpen(!isMenuOpen)}
             aria-label={isMenuOpen ? "Close menu" : "Open menu"}
           >
             {isMenuOpen ? (
-              <X className="h-5 w-5" />
+              <X className="h-5 w-5 transition-all duration-200" />
             ) : (
-              <Menu className="h-5 w-5" />
+              <Menu className="h-5 w-5 transition-all duration-200" />
             )}
           </Button>
         </div>
       </div>
 
-      {/* Mobile menu */}
+      {/* Mobile menu - improved with animation and styling */}
       <div
-        className={`md:hidden fixed inset-x-0 top-[60px] bg-white shadow-lg transition-transform duration-300 ease-in-out z-40 ${
-          isMenuOpen ? "translate-y-0" : "-translate-y-full"
+        className={`md:hidden fixed inset-x-0 top-[60px] bg-white shadow-lg transition-all duration-300 ease-in-out z-40 ${
+          isMenuOpen ? "translate-y-0 opacity-100" : "-translate-y-full opacity-0"
         }`}
       >
-        <nav className="flex flex-col p-4 space-y-4">
-          <Link to="/" className="flex items-center space-x-2 py-2 px-4 rounded-md hover:bg-gray-100" onClick={closeMenu}>
+        <nav className="flex flex-col p-4 space-y-4 max-h-[70vh] overflow-y-auto">
+          <Link to="/" className="flex items-center space-x-2 py-3 px-4 rounded-md hover:bg-gray-100" onClick={closeMenu}>
             <Home className="h-5 w-5" /> 
             <span>Home</span>
           </Link>
-          <a href="#catalog-section" className="flex items-center space-x-2 py-2 px-4 rounded-md hover:bg-gray-100" onClick={closeMenu}>
+          <a href="#catalog-section" className="flex items-center space-x-2 py-3 px-4 rounded-md hover:bg-gray-100" onClick={closeMenu}>
             <ShoppingCart className="h-5 w-5" />
             <span>Products</span>
           </a>
-          <a href="#features-section" className="flex items-center space-x-2 py-2 px-4 rounded-md hover:bg-gray-100" onClick={closeMenu}>
+          <a href="#features-section" className="flex items-center space-x-2 py-3 px-4 rounded-md hover:bg-gray-100" onClick={closeMenu}>
             <Package className="h-5 w-5" />
             <span>Features</span>
           </a>
-          <a href="#benefits-section" className="flex items-center space-x-2 py-2 px-4 rounded-md hover:bg-gray-100" onClick={closeMenu}>
+          <a href="#benefits-section" className="flex items-center space-x-2 py-3 px-4 rounded-md hover:bg-gray-100" onClick={closeMenu}>
             <Heart className="h-5 w-5" />
             <span>Benefits</span>
           </a>
-          <a href="#testimonials-section" className="flex items-center space-x-2 py-2 px-4 rounded-md hover:bg-gray-100" onClick={closeMenu}>
+          <a href="#testimonials-section" className="flex items-center space-x-2 py-3 px-4 rounded-md hover:bg-gray-100" onClick={closeMenu}>
             <User className="h-5 w-5" />
             <span>Testimonials</span>
           </a>

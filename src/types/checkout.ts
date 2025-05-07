@@ -1,25 +1,24 @@
-
 import { CartProduct } from './user';
 
 export interface ShippingAddress {
   firstName: string;
   lastName: string;
-  address: string;
+  address: string; // House Number, building name
   city: string;
-  region: string;
-  postalCode: string;
-  country: string;
+  region: string; // Road name, area, colony
+  postalCode: string; // Pin code
+  country: string; // Default: India
   phone: string;
 }
 
 export interface BillingAddress {
   firstName: string;
   lastName: string;
-  address: string;
+  address: string; // House Number, building name
   city: string;
-  region: string;
-  postalCode: string;
-  country: string;
+  region: string; // Road name, area, colony
+  postalCode: string; // Pin code
+  country: string; // Default: India
   phone: string;
 }
 
