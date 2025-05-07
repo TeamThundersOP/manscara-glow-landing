@@ -19,7 +19,7 @@ const CustomCursor = () => {
         target.closest('a') ||
         getComputedStyle(target).cursor === 'pointer';
         
-      setIsPointer(isClickable);
+      setIsPointer(!!isClickable); // Convert to boolean to fix type error
     };
     
     const handleMouseDown = () => setIsClicking(true);
