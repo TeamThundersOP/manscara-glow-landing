@@ -143,7 +143,7 @@ const Checkout = () => {
       city: "",
       region: "",
       postalCode: "",
-      country: "",
+      country: "India", // Default country set to India
       phone: "",
     },
   });
@@ -630,22 +630,12 @@ const Checkout = () => {
                                 </FormItem>
                               )}
                             />
+                            {/* Hidden country field, defaults to India */}
                             <FormField
                               control={shippingForm.control}
                               name="country"
                               render={({ field }) => (
-                                <FormItem>
-                                  <FormLabel>Country</FormLabel>
-                                  <FormControl>
-                                    <Input
-                                      placeholder="India"
-                                      defaultValue="India"
-                                      {...field}
-                                      className="rounded-md"
-                                    />
-                                  </FormControl>
-                                  <FormMessage />
-                                </FormItem>
+                                <input type="hidden" {...field} />
                               )}
                             />
                             <FormField

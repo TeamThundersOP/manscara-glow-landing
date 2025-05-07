@@ -21,7 +21,7 @@ const AddressTab = () => {
     city: "",
     state: "",
     zipCode: "",
-    country: "",
+    country: "India", // Default to India
     phone: "",
     isPrimary: false
   });
@@ -76,7 +76,7 @@ const AddressTab = () => {
         city: "",
         state: "",
         zipCode: "",
-        country: "",
+        country: "India", // Default to India
         phone: "",
         isPrimary: false
       });
@@ -252,16 +252,12 @@ const AddressTab = () => {
                     onChange={(e) => setNewAddress({...newAddress, zipCode: e.target.value})}
                   />
                 </div>
-                <div>
-                  <Label htmlFor="new-country">Country</Label>
-                  <Input 
-                    id="new-country"
-                    placeholder="India" 
-                    defaultValue="India"
-                    value={newAddress.country} 
-                    onChange={(e) => setNewAddress({...newAddress, country: e.target.value})}
-                  />
-                </div>
+                {/* Country field hidden and defaulted to India */}
+                <input 
+                  type="hidden" 
+                  value="India" 
+                  onChange={(e) => setNewAddress({...newAddress, country: e.target.value})}
+                />
               </div>
               <div className="mt-4 flex space-x-3">
                 <Button 
@@ -272,8 +268,7 @@ const AddressTab = () => {
                     !newAddress.street || 
                     !newAddress.city || 
                     !newAddress.state || 
-                    !newAddress.zipCode || 
-                    !newAddress.country
+                    !newAddress.zipCode
                   }
                 >
                   Add Address
@@ -297,7 +292,7 @@ const AddressTab = () => {
                 const address = addresses.find(a => a.id === editingAddress);
                 if (!address) return null;
                 
-                const [editedAddress, setEditedAddress] = useState<Address>({...address});
+                const [editedAddress, setEditedAddress] = useState<Address>({...address, country: address.country || "India"});
                 
                 return (
                   <>
@@ -350,14 +345,12 @@ const AddressTab = () => {
                           onChange={(e) => setEditedAddress({...editedAddress, zipCode: e.target.value})}
                         />
                       </div>
-                      <div>
-                        <Label htmlFor="edit-country">Country</Label>
-                        <Input 
-                          id="edit-country"
-                          value={editedAddress.country || "India"} 
-                          onChange={(e) => setEditedAddress({...editedAddress, country: e.target.value})}
-                        />
-                      </div>
+                      {/* Country field hidden and defaulted to India */}
+                      <input 
+                        type="hidden" 
+                        value="India"
+                        onChange={(e) => setEditedAddress({...editedAddress, country: e.target.value})}
+                      />
                     </div>
                     <div className="mt-4 flex space-x-3">
                       <Button 

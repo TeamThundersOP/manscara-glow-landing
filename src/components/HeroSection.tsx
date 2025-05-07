@@ -27,9 +27,9 @@ const HeroSection = () => {
       {/* Bottom overlay to hide Spline watermark */}
       <div className="absolute bottom-0 left-0 w-full h-16 bg-manscara-offwhite z-10"></div>
       
-      {/* Hero Content - Adjusted for better mobile display */}
+      {/* Hero Content - Adjusted to take 50% width on all screen sizes */}
       <div className="relative z-20 container h-full flex items-center">
-        <div className="grid grid-cols-1 md:grid-cols-2 gap-8 lg:gap-12 pt-16 md:pt-0">
+        <div className="w-full md:w-1/2">
           <div className="flex flex-col justify-center">
             <h1 className={`${isMobile ? 'text-3xl' : 'text-4xl md:text-5xl lg:text-6xl'} font-bold leading-tight mb-6`}>
               <span className="font-serif">Manscara</span> <span className="text-gray-700">Face Wash</span>
