@@ -13,6 +13,7 @@ import Login from "./pages/Auth/Login";
 import Register from "./pages/Auth/Register";
 import NotFound from "./pages/NotFound";
 import ProtectedRoute from "./components/ProtectedRoute";
+import CustomCursor from "./components/CustomCursor";
 
 const queryClient = new QueryClient();
 
@@ -22,6 +23,7 @@ const App = () => (
       <CartProvider>
         <Toaster />
         <Sonner />
+        <CustomCursor />
         <BrowserRouter>
           <Routes>
             <Route path="/" element={<Index />} />

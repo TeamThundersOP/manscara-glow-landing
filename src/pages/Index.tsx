@@ -8,6 +8,7 @@ import BenefitsSection from "@/components/BenefitsSection";
 import ReviewsSection from "@/components/ReviewsSection";
 import CTASection from "@/components/CTASection";
 import Footer from "@/components/Footer";
+import ParticleBackground from "@/components/ParticleBackground";
 
 const Index = () => {
   return (
@@ -30,7 +31,8 @@ const Index = () => {
         <div id="catalog-section">
           <ProductCatalog className="bg-white" />
         </div>
-        <div id="features-section">
+        <div id="features-section" className="relative">
+          <ParticleBackground count={40} color="#d3e4fd" speed={0.2} />
           <FeaturesSection className="bg-manscara-offwhite" />
         </div>
         <div id="benefits-section">
