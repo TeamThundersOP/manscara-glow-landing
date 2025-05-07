@@ -1,6 +1,7 @@
 
 import { Button } from "@/components/ui/button";
 import { ArrowDown } from "lucide-react";
+import { useIsMobile } from "@/hooks/use-mobile";
 
 const HeroSection = () => {
   // Function to scroll to the next section
@@ -11,29 +12,30 @@ const HeroSection = () => {
     }
   };
 
+  const isMobile = useIsMobile();
+
   return (
-    <section className="relative h-screen overflow-hidden">
-      {/* Spline 3D Background */}
-      <iframe 
-        src="https://my.spline.design/untitled-u4s8i7PRD7YAgbg8Z2gY3yZo/" 
-        frameBorder="0"
-        className="absolute inset-0 w-full h-full z-0"
-        title="3D Background"
-      />
+    <section className="relative h-[90vh] sm:h-screen overflow-hidden">
+      {/* Spline 3D Background using the provided embed code */}
+      <div className="absolute inset-0 w-full h-full z-0">
+        <spline-viewer 
+          loading-anim-type="spinner-small-light" 
+          url="https://prod.spline.design/E1JnXeUPttEDoYtZ/scene.splinecode"
+          className="w-full h-full"
+        />
+      </div>
       
       {/* Bottom overlay to hide Spline watermark */}
       <div className="absolute bottom-0 left-0 w-full h-16 bg-manscara-offwhite z-10"></div>
       
-      {/* Modified: Removing the top overlay and handling this with padding */}
-      
-      {/* Hero Content - Adjusted padding */}
+      {/* Hero Content - Adjusted for better mobile display */}
       <div className="relative z-20 container h-full flex items-center">
         <div className="grid grid-cols-1 md:grid-cols-2 gap-8 lg:gap-12 pt-16 md:pt-0">
           <div className="flex flex-col justify-center">
-            <h1 className="text-4xl md:text-5xl lg:text-6xl font-bold leading-tight mb-6">
+            <h1 className={`${isMobile ? 'text-3xl' : 'text-4xl md:text-5xl lg:text-6xl'} font-bold leading-tight mb-6`}>
               <span className="font-serif">Manscara</span> <span className="text-gray-700">Face Wash</span>
             </h1>
-            <p className="text-lg md:text-xl text-muted-foreground mb-8">
+            <p className={`${isMobile ? 'text-base' : 'text-lg md:text-xl'} text-muted-foreground mb-8`}>
               Advanced formula with natural ingredients to cleanse, refresh, and rejuvenate your skin. Developed by dermatologists specifically for men's skin.
             </p>
             <div className="flex flex-col sm:flex-row gap-4">
@@ -70,20 +72,6 @@ const HeroSection = () => {
           <ArrowDown className="h-6 w-6" />
         </Button>
       </div>
-      
-      {/* Responsive styles using Tailwind classes instead of JSX style */}
-      <style>
-        {`
-          @media (max-width: 768px) {
-            h1 {
-              font-size: 2.5rem;
-            }
-            p {
-              font-size: 1rem;
-            }
-          }
-        `}
-      </style>
     </section>
   );
 };

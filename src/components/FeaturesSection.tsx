@@ -28,9 +28,9 @@ const features = [
   },
   {
     id: 4,
-    title: "Dermatologist Approved",
-    description: "Thoroughly tested and approved by leading dermatologists for all skin types.",
-    icon: "👨‍⚕️",
+    title: "Exfoliating Microbeads",
+    description: "Natural microbeads gently remove dead skin cells for a smoother, brighter complexion.",
+    icon: "🔄",
   },
 ];
 

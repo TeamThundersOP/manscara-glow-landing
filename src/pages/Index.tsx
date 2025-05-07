@@ -21,6 +21,7 @@ const Index = () => {
         <meta property="og:title" content="Manscara - Premium Face Wash for Men" />
         <meta property="og:description" content="Premium skincare products designed specifically for men. Looking good has never been this simple." />
         <meta property="og:url" content="https://manscara.com" />
+        <script type="module" src="https://unpkg.com/@splinetool/viewer@1.9.91/build/spline-viewer.js"></script>
       </Helmet>
 
       <Navbar />
