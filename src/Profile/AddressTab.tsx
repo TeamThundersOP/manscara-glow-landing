@@ -1,4 +1,3 @@
-
 import { useState, useEffect } from "react";
 import { useToast } from "@/hooks/use-toast";
 import { Button } from "@/components/ui/button";
@@ -218,10 +217,10 @@ const AddressTab = () => {
                   />
                 </div>
                 <div className="md:col-span-2">
-                  <Label htmlFor="new-street">Street Address</Label>
+                  <Label htmlFor="new-street">House Number, Building Name</Label>
                   <Input 
                     id="new-street"
-                    placeholder="Street address" 
+                    placeholder="House number, building name" 
                     value={newAddress.street} 
                     onChange={(e) => setNewAddress({...newAddress, street: e.target.value})}
                   />
@@ -236,19 +235,19 @@ const AddressTab = () => {
                   />
                 </div>
                 <div>
-                  <Label htmlFor="new-state">State</Label>
+                  <Label htmlFor="new-state">Road Name, Area, Colony</Label>
                   <Input 
                     id="new-state"
-                    placeholder="State" 
+                    placeholder="Road name, area, colony" 
                     value={newAddress.state} 
                     onChange={(e) => setNewAddress({...newAddress, state: e.target.value})}
                   />
                 </div>
                 <div>
-                  <Label htmlFor="new-zipCode">ZIP Code</Label>
+                  <Label htmlFor="new-zipCode">Pin Code</Label>
                   <Input 
                     id="new-zipCode"
-                    placeholder="ZIP Code" 
+                    placeholder="Pin code" 
                     value={newAddress.zipCode} 
                     onChange={(e) => setNewAddress({...newAddress, zipCode: e.target.value})}
                   />
@@ -257,7 +256,8 @@ const AddressTab = () => {
                   <Label htmlFor="new-country">Country</Label>
                   <Input 
                     id="new-country"
-                    placeholder="Country" 
+                    placeholder="India" 
+                    defaultValue="India"
                     value={newAddress.country} 
                     onChange={(e) => setNewAddress({...newAddress, country: e.target.value})}
                   />
@@ -319,7 +319,7 @@ const AddressTab = () => {
                         />
                       </div>
                       <div className="md:col-span-2">
-                        <Label htmlFor="edit-street">Street Address</Label>
+                        <Label htmlFor="edit-street">House Number, Building Name</Label>
                         <Input 
                           id="edit-street"
                           value={editedAddress.street} 
@@ -335,7 +335,7 @@ const AddressTab = () => {
                         />
                       </div>
                       <div>
-                        <Label htmlFor="edit-state">State</Label>
+                        <Label htmlFor="edit-state">Road Name, Area, Colony</Label>
                         <Input 
                           id="edit-state"
                           value={editedAddress.state} 
@@ -343,7 +343,7 @@ const AddressTab = () => {
                         />
                       </div>
                       <div>
-                        <Label htmlFor="edit-zipCode">ZIP Code</Label>
+                        <Label htmlFor="edit-zipCode">Pin Code</Label>
                         <Input 
                           id="edit-zipCode"
                           value={editedAddress.zipCode} 
@@ -354,7 +354,7 @@ const AddressTab = () => {
                         <Label htmlFor="edit-country">Country</Label>
                         <Input 
                           id="edit-country"
-                          value={editedAddress.country} 
+                          value={editedAddress.country || "India"} 
                           onChange={(e) => setEditedAddress({...editedAddress, country: e.target.value})}
                         />
                       </div>

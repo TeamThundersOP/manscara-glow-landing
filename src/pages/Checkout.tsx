@@ -567,10 +567,10 @@ const Checkout = () => {
                               name="address"
                               render={({ field }) => (
                                 <FormItem>
-                                  <FormLabel>Address</FormLabel>
+                                  <FormLabel>House Number, Building Name</FormLabel>
                                   <FormControl>
                                     <Input
-                                      placeholder="123 Main St"
+                                      placeholder="123 Main St, Apartment 4B"
                                       {...field}
                                       className="rounded-md"
                                     />
@@ -587,7 +587,7 @@ const Checkout = () => {
                                   <FormLabel>City</FormLabel>
                                   <FormControl>
                                     <Input
-                                      placeholder="New York"
+                                      placeholder="Mumbai"
                                       {...field}
                                       className="rounded-md"
                                     />
@@ -601,10 +601,10 @@ const Checkout = () => {
                               name="region"
                               render={({ field }) => (
                                 <FormItem>
-                                  <FormLabel>Region</FormLabel>
+                                  <FormLabel>Road Name, Area, Colony</FormLabel>
                                   <FormControl>
                                     <Input
-                                      placeholder="NY"
+                                      placeholder="MG Road, Bandra West"
                                       {...field}
                                       className="rounded-md"
                                     />
@@ -618,10 +618,10 @@ const Checkout = () => {
                               name="postalCode"
                               render={({ field }) => (
                                 <FormItem>
-                                  <FormLabel>Postal Code</FormLabel>
+                                  <FormLabel>Pin Code</FormLabel>
                                   <FormControl>
                                     <Input
-                                      placeholder="10001"
+                                      placeholder="400001"
                                       {...field}
                                       className="rounded-md"
                                     />
@@ -638,7 +638,8 @@ const Checkout = () => {
                                   <FormLabel>Country</FormLabel>
                                   <FormControl>
                                     <Input
-                                      placeholder="USA"
+                                      placeholder="India"
+                                      defaultValue="India"
                                       {...field}
                                       className="rounded-md"
                                     />
@@ -655,7 +656,7 @@ const Checkout = () => {
                                   <FormLabel>Phone</FormLabel>
                                   <FormControl>
                                     <Input
-                                      placeholder="555-555-5555"
+                                      placeholder="+91 9876543210"
                                       {...field}
                                       className="rounded-md"
                                     />
