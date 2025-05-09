@@ -2,8 +2,6 @@
 import { Button } from "@/components/ui/button";
 import { ArrowDown } from "lucide-react";
 import { useIsMobile } from "@/hooks/use-mobile";
-import ParticleBackground from "./ParticleBackground";
-import CounterAnimation from "./CounterAnimation";
 
 const HeroSection = () => {
   // Function to scroll to the next section
@@ -18,9 +16,6 @@ const HeroSection = () => {
 
   return (
     <section className="relative h-[90vh] sm:h-screen overflow-hidden">
-      {/* Particles Background */}
-      <ParticleBackground count={30} color="#d3e4fd" />
-      
       {/* Spline 3D Background using the provided embed code */}
       <div className="absolute inset-0 w-full h-full z-0">
         {/* Using dangerouslySetInnerHTML to properly render the custom element */}
@@ -35,7 +30,7 @@ const HeroSection = () => {
       {/* Hero Content - Now using w-1/2 on all screen sizes */}
       <div className="relative z-20 container h-full flex items-center">
         <div className="w-1/2">
-          <div className="flex flex-col justify-center animate-fade-in">
+          <div className="flex flex-col justify-center">
             <h1 className={`${isMobile ? 'text-3xl' : 'text-4xl md:text-5xl lg:text-6xl'} font-bold leading-tight mb-6`}>
               <span className="font-serif">Manscara</span> <span className="text-gray-700">Face Wash</span>
             </h1>
@@ -45,7 +40,7 @@ const HeroSection = () => {
             <div className="flex flex-col sm:flex-row gap-4">
               <Button 
                 size="lg" 
-                className="bg-manscara-black hover:bg-black text-white transform transition-transform hover:scale-105"
+                className="bg-manscara-black hover:bg-black text-white"
                 onClick={scrollToNextSection}
               >
                 Shop Now
@@ -53,28 +48,21 @@ const HeroSection = () => {
               <Button 
                 variant="outline" 
                 size="lg"
-                className="transform transition-transform hover:scale-105"
               >
                 Learn More
               </Button>
             </div>
             <div className="mt-8 grid grid-cols-3 gap-4">
-              <div className="transform transition-all hover:translate-y-[-5px] duration-300">
-                <p className="text-2xl md:text-3xl font-bold">
-                  <CounterAnimation end={98} suffix="%" className="font-bold" />
-                </p>
+              <div>
+                <p className="text-2xl md:text-3xl font-bold">98%</p>
                 <p className="text-sm text-muted-foreground">Report Cleaner Skin</p>
               </div>
-              <div className="transform transition-all hover:translate-y-[-5px] duration-300">
-                <p className="text-2xl md:text-3xl font-bold">
-                  <CounterAnimation end={30} suffix="+" className="font-bold" />
-                </p>
+              <div>
+                <p className="text-2xl md:text-3xl font-bold">30+</p>
                 <p className="text-sm text-muted-foreground">Natural Ingredients</p>
               </div>
-              <div className="transform transition-all hover:translate-y-[-5px] duration-300">
-                <p className="text-2xl md:text-3xl font-bold">
-                  <CounterAnimation end={24} suffix="h" className="font-bold" />
-                </p>
+              <div>
+                <p className="text-2xl md:text-3xl font-bold">24h</p>
                 <p className="text-sm text-muted-foreground">Lasting Effect</p>
               </div>
             </div>
@@ -87,7 +75,7 @@ const HeroSection = () => {
         <Button 
           variant="ghost" 
           size="icon" 
-          className="rounded-full animate-bounce hover:bg-white/20"
+          className="rounded-full animate-bounce"
           onClick={scrollToNextSection}
         >
           <ArrowDown className="h-6 w-6" />
