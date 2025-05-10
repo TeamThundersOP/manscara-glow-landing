@@ -15,7 +15,7 @@ const HeroSection = () => {
   const isMobile = useIsMobile();
 
   return (
-    <section className="relative h-[90vh] sm:h-screen overflow-hidden">
+    <section className="relative h-[90vh] sm:h-screen overflow-hidden pt-16 md:pt-20">
       {/* Spline 3D Background using the provided embed code */}
       <div className="absolute inset-0 w-full h-full z-0">
         {/* Using dangerouslySetInnerHTML to properly render the custom element */}
@@ -27,9 +27,9 @@ const HeroSection = () => {
       {/* Bottom overlay to hide Spline watermark */}
       <div className="absolute bottom-0 left-0 w-full h-16 bg-manscara-offwhite z-10"></div>
       
-      {/* Hero Content - Now using w-1/2 on all screen sizes */}
+      {/* Hero Content - Now using w-full for mobile and w-1/2 for larger screens */}
       <div className="relative z-20 container h-full flex items-center">
-        <div className="w-1/2">
+        <div className="w-full md:w-1/2">
           <div className="flex flex-col justify-center">
             <h1 className={`${isMobile ? 'text-3xl' : 'text-4xl md:text-5xl lg:text-6xl'} font-bold leading-tight mb-6`}>
               <span className="font-serif">Manscara</span> <span className="text-gray-700">Face Wash</span>

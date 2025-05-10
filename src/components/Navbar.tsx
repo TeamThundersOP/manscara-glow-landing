@@ -90,6 +90,23 @@ const Navbar = () => {
     setIsMenuOpen(false);
   };
 
+  // Function to handle anchor links with smooth scrolling
+  const handleAnchorClick = (e: React.MouseEvent<HTMLAnchorElement, MouseEvent>, sectionId: string) => {
+    e.preventDefault();
+    closeMenu();
+    
+    // Only scroll if on homepage
+    if (isHomePage) {
+      const element = document.getElementById(sectionId);
+      if (element) {
+        element.scrollIntoView({ behavior: 'smooth' });
+      }
+    } else {
+      // If not on homepage, navigate to homepage with the section as hash
+      window.location.href = `/#${sectionId}`;
+    }
+  };
+
   return (
     <header
       className={`fixed top-0 left-0 right-0 z-50 w-full transition-all duration-300 ${
@@ -124,24 +141,28 @@ const Navbar = () => {
           <a 
             href="#catalog-section" 
             className="text-sm font-medium text-gray-500 hover:text-gray-600 transition-colors"
+            onClick={(e) => handleAnchorClick(e, "catalog-section")}
           >
             Products
           </a>
           <a
             href="#features-section"
             className="text-sm font-medium text-gray-500 hover:text-gray-600 transition-colors"
+            onClick={(e) => handleAnchorClick(e, "features-section")}
           >
             Features
           </a>
           <a
             href="#benefits-section"
             className="text-sm font-medium text-gray-500 hover:text-gray-600 transition-colors"
+            onClick={(e) => handleAnchorClick(e, "benefits-section")}
           >
             Benefits
           </a>
           <a
             href="#testimonials-section"
             className="text-sm font-medium text-gray-500 hover:text-gray-600 transition-colors"
+            onClick={(e) => handleAnchorClick(e, "testimonials-section")}
           >
             Testimonials
           </a>
@@ -253,35 +274,53 @@ const Navbar = () => {
         </div>
       </div>
 
-      {/* Mobile menu - improved with animation and styling */}
-      <div
-        className={`md:hidden fixed inset-x-0 top-[60px] bg-white shadow-lg transition-all duration-300 ease-in-out z-40 ${
-          isMenuOpen ? "translate-y-0 opacity-100" : "-translate-y-full opacity-0"
-        }`}
-      >
-        <nav className="flex flex-col p-4 space-y-4 max-h-[70vh] overflow-y-auto">
-          <Link to="/" className="flex items-center space-x-2 py-3 px-4 rounded-md hover:bg-gray-100" onClick={closeMenu}>
-            <Home className="h-5 w-5" /> 
-            <span>Home</span>
-          </Link>
-          <a href="#catalog-section" className="flex items-center space-x-2 py-3 px-4 rounded-md hover:bg-gray-100" onClick={closeMenu}>
-            <ShoppingCart className="h-5 w-5" />
-            <span>Products</span>
-          </a>
-          <a href="#features-section" className="flex items-center space-x-2 py-3 px-4 rounded-md hover:bg-gray-100" onClick={closeMenu}>
-            <Package className="h-5 w-5" />
-            <span>Features</span>
-          </a>
-          <a href="#benefits-section" className="flex items-center space-x-2 py-3 px-4 rounded-md hover:bg-gray-100" onClick={closeMenu}>
-            <Heart className="h-5 w-5" />
-            <span>Benefits</span>
-          </a>
-          <a href="#testimonials-section" className="flex items-center space-x-2 py-3 px-4 rounded-md hover:bg-gray-100" onClick={closeMenu}>
-            <User className="h-5 w-5" />
-            <span>Testimonials</span>
-          </a>
-        </nav>
-      </div>
+      {/* Mobile menu - fixed positioning to ensure it appears correctly */}
+      {isMenuOpen && (
+        <div className="md:hidden fixed inset-x-0 top-[60px] bg-white shadow-lg z-40 max-h-[80vh] overflow-y-auto">
+          <nav className="flex flex-col p-4 space-y-4">
+            <Link 
+              to="/" 
+              className="flex items-center space-x-2 py-3 px-4 rounded-md hover:bg-gray-100" 
+              onClick={closeMenu}
+            >
+              <Home className="h-5 w-5" /> 
+              <span>Home</span>
+            </Link>
+            <a 
+              href="#catalog-section" 
+              className="flex items-center space-x-2 py-3 px-4 rounded-md hover:bg-gray-100" 
+              onClick={(e) => handleAnchorClick(e, "catalog-section")}
+            >
+              <ShoppingCart className="h-5 w-5" />
+              <span>Products</span>
+            </a>
+            <a 
+              href="#features-section" 
+              className="flex items-center space-x-2 py-3 px-4 rounded-md hover:bg-gray-100" 
+              onClick={(e) => handleAnchorClick(e, "features-section")}
+            >
+              <Package className="h-5 w-5" />
+              <span>Features</span>
+            </a>
+            <a 
+              href="#benefits-section" 
+              className="flex items-center space-x-2 py-3 px-4 rounded-md hover:bg-gray-100" 
+              onClick={(e) => handleAnchorClick(e, "benefits-section")}
+            >
+              <Heart className="h-5 w-5" />
+              <span>Benefits</span>
+            </a>
+            <a 
+              href="#testimonials-section" 
+              className="flex items-center space-x-2 py-3 px-4 rounded-md hover:bg-gray-100" 
+              onClick={(e) => handleAnchorClick(e, "testimonials-section")}
+            >
+              <User className="h-5 w-5" />
+              <span>Testimonials</span>
+            </a>
+          </nav>
+        </div>
+      )}
     </header>
   );
 };
