@@ -182,7 +182,7 @@ const ProductCatalog = ({ className = "" }: ProductCatalogProps) => {
               <Card className="bg-white shadow-md overflow-hidden">
                 <div className="grid grid-cols-1 lg:grid-cols-2 gap-0">
                   {/* Product Image */}
-                  <div className="bg-gradient-to-br from-gray-50 to-gray-100 p-8 flex items-center justify-center relative h-[500px]">
+                  <div className="bg-white p-4 flex items-center justify-center relative h-[500px]">
                     {discountPercentage > 0 && (
                       <div className="absolute top-4 left-4">
                         <span className="inline-flex items-center rounded-full bg-red-500 text-white px-3 py-1.5 text-xs font-medium">
@@ -193,14 +193,14 @@ const ProductCatalog = ({ className = "" }: ProductCatalogProps) => {
                     <img 
                       src={selectedProduct.images[0]} 
                       alt={selectedProduct.name} 
-                      className="w-full h-full object-contain hover:scale-105 transition-transform duration-300"
+                      className="w-full h-full object-contain"
                     />
                   </div>
                   
                   {/* Product Details */}
-                  <CardContent className="p-8 lg:p-10 space-y-6 bg-gradient-to-b from-white to-gray-50">
-                    <div className="space-y-1">
-                      <h3 className="text-2xl md:text-3xl font-serif font-bold">
+                  <CardContent className="p-6 lg:p-8 space-y-6">
+                    <div className="space-y-2">
+                      <h3 className="text-3xl md:text-4xl font-serif font-bold">
                         {selectedProduct.name}
                       </h3>
                       <p className="text-lg text-gray-600 italic">
@@ -209,20 +209,20 @@ const ProductCatalog = ({ className = "" }: ProductCatalogProps) => {
                       <div className="flex items-baseline mt-4">
                         {selectedProduct.discountPrice ? (
                           <>
-                            <h4 className="text-3xl font-bold text-manscara-black">
+                            <h4 className="text-4xl font-bold">
                               ₹{selectedProduct.discountPrice.toFixed(2)}
                             </h4>
-                            <span className="ml-2 text-sm text-gray-500 line-through">
+                            <span className="ml-2 text-lg text-gray-500 line-through">
                               ₹{selectedProduct.price.toFixed(2)}
                             </span>
                           </>
                         ) : (
-                          <h4 className="text-3xl font-bold text-manscara-black">
+                          <h4 className="text-4xl font-bold">
                             ₹{selectedProduct.price.toFixed(2)}
                           </h4>
                         )}
                       </div>
-                      <div className="flex items-center gap-2 mt-1">
+                      <div className="flex items-center gap-2 mt-2">
                         <div className="flex">
                           {[1, 2, 3, 4, 5].map((star) => (
                             <svg key={star} className="w-4 h-4 text-yellow-500" fill="currentColor" viewBox="0 0 20 20">
@@ -236,14 +236,14 @@ const ProductCatalog = ({ className = "" }: ProductCatalogProps) => {
                       </div>
                     </div>
                     
-                    {/* Product Advantages */}
-                    <div className="space-y-3 bg-manscara-offwhite p-4 rounded-lg">
-                      <h5 className="font-medium">Key Benefits</h5>
-                      <div className="grid grid-cols-2 gap-y-2">
+                    {/* Product Key Benefits */}
+                    <div className="bg-gray-50 p-6 rounded-lg">
+                      <h5 className="font-bold text-xl mb-4">Key Benefits</h5>
+                      <div className="grid grid-cols-2 gap-y-4">
                         {selectedProduct.advantages.map((advantage, i) => (
-                          <div key={i} className="flex items-start space-x-2">
-                            <span className="inline-flex items-center justify-center w-5 h-5 rounded-full bg-manscara-black text-white text-xs">✓</span>
-                            <span className="text-sm">{advantage}</span>
+                          <div key={i} className="flex items-center space-x-2">
+                            <span className="inline-flex items-center justify-center w-5 h-5 rounded-full bg-black text-white text-xs">✓</span>
+                            <span>{advantage}</span>
                           </div>
                         ))}
                       </div>
@@ -251,12 +251,12 @@ const ProductCatalog = ({ className = "" }: ProductCatalogProps) => {
                     
                     {/* Skin Type */}
                     <div>
-                      <p className="text-sm text-gray-600 mb-2 font-medium">Suitable for:</p>
+                      <p className="font-medium mb-3">Suitable for:</p>
                       <div className="flex flex-wrap gap-2">
                         {selectedProduct.skinType.map((type, i) => (
                           <span 
                             key={i} 
-                            className="px-3 py-1 bg-manscara-beige rounded-full text-xs font-medium shadow-sm"
+                            className="px-4 py-2 bg-gray-100 rounded-full text-sm font-medium"
                           >
                             {type}
                           </span>
@@ -266,45 +266,43 @@ const ProductCatalog = ({ className = "" }: ProductCatalogProps) => {
                     
                     {/* Add to Cart */}
                     <div className="pt-4">
-                      <div className="flex items-center flex-wrap gap-4">
-                        <div className="flex items-center border border-gray-300 rounded-md overflow-hidden bg-white">
+                      <div className="flex flex-wrap gap-4">
+                        <div className="inline-flex items-center border border-gray-300 rounded-md overflow-hidden bg-white">
                           <Button 
                             variant="ghost" 
                             size="icon" 
                             onClick={handleDecrement}
                             disabled={quantity <= 1}
-                            className="text-gray-500 hover:text-black h-10 w-10 rounded-none"
+                            className="text-gray-500 hover:text-black h-12 w-12 rounded-none"
                           >
                             <Minus className="h-4 w-4" />
                           </Button>
-                          <span className="w-10 text-center font-medium">{quantity}</span>
+                          <span className="w-12 text-center font-medium text-xl">{quantity}</span>
                           <Button 
                             variant="ghost" 
                             size="icon" 
                             onClick={handleIncrement}
                             disabled={quantity >= selectedProduct.stock}
-                            className="text-gray-500 hover:text-black h-10 w-10 rounded-none"
+                            className="text-gray-500 hover:text-black h-12 w-12 rounded-none"
                           >
                             <Plus className="h-4 w-4" />
                           </Button>
                         </div>
                         
-                        <div className="flex flex-1 gap-2">
-                          <Button 
-                            onClick={() => handleAddToCart(selectedProduct, quantity)}
-                            className="flex-1 bg-manscara-black text-white py-3 rounded font-medium hover:opacity-90 transition-opacity flex items-center justify-center shadow-md"
-                          >
-                            <ShoppingCart className="mr-2 h-4 w-4" />
-                            Add to Cart
-                          </Button>
-                          
-                          <Button 
-                            variant="outline" 
-                            className="flex-1 border-black text-black hover:bg-black hover:text-white py-3 shadow-sm"
-                          >
-                            Buy Now
-                          </Button>
-                        </div>
+                        <Button 
+                          onClick={() => handleAddToCart(selectedProduct, quantity)}
+                          className="flex-1 bg-black text-white py-3 h-12 rounded-md font-medium hover:opacity-90 transition-opacity flex items-center justify-center"
+                        >
+                          <ShoppingCart className="mr-2 h-4 w-4" />
+                          Add to Cart
+                        </Button>
+                        
+                        <Button 
+                          variant="outline" 
+                          className="flex-1 border-black text-black hover:bg-black hover:text-white h-12 py-3 rounded-md"
+                        >
+                          Buy Now
+                        </Button>
                       </div>
                     </div>
                   </CardContent>
@@ -316,14 +314,14 @@ const ProductCatalog = ({ className = "" }: ProductCatalogProps) => {
                   
                   <div className="grid grid-cols-1 md:grid-cols-2 gap-8">
                     <div className="bg-white p-6 rounded-lg shadow-sm">
-                      <h4 className="font-serif font-medium mb-4 text-lg text-manscara-black inline-block border-b-2 border-manscara-black pb-1">Description</h4>
+                      <h4 className="font-serif font-medium mb-4 text-lg text-black inline-block border-b-2 border-black pb-1">Description</h4>
                       <p className="text-gray-600 leading-relaxed">{selectedProduct.description}</p>
                       
-                      <h4 className="font-serif font-medium mb-4 text-lg mt-8 text-manscara-black inline-block border-b-2 border-manscara-black pb-1">Recommended Uses</h4>
+                      <h4 className="font-serif font-medium mb-4 text-lg mt-8 text-black inline-block border-b-2 border-black pb-1">Recommended Uses</h4>
                       <ul className="text-gray-600 space-y-3">
                         {selectedProduct.uses.map((use, i) => (
                           <li key={i} className="flex items-start">
-                            <span className="flex items-center justify-center w-6 h-6 rounded-full bg-manscara-beige text-manscara-black font-medium text-xs mr-3 mt-0.5">{i+1}</span>
+                            <span className="flex items-center justify-center w-6 h-6 rounded-full bg-gray-100 text-black font-medium text-xs mr-3 mt-0.5">{i+1}</span>
                             <span className="flex-1">{use}</span>
                           </li>
                         ))}
@@ -331,17 +329,17 @@ const ProductCatalog = ({ className = "" }: ProductCatalogProps) => {
                     </div>
                     
                     <div className="bg-white p-6 rounded-lg shadow-sm">
-                      <h4 className="font-serif font-medium mb-4 text-lg text-manscara-black inline-block border-b-2 border-manscara-black pb-1">Ingredients</h4>
+                      <h4 className="font-serif font-medium mb-4 text-lg text-black inline-block border-b-2 border-black pb-1">Ingredients</h4>
                       <div className="text-gray-600 leading-relaxed space-y-2">
                         {selectedProduct.ingredients.map((ingredient, i) => (
                           <div key={i} className="flex items-center py-1.5 border-b border-gray-100 last:border-0">
-                            <span className="w-2 h-2 bg-manscara-black rounded-full mr-3"></span>
+                            <span className="w-2 h-2 bg-black rounded-full mr-3"></span>
                             <span>{ingredient}</span>
                           </div>
                         ))}
                       </div>
 
-                      <div className="mt-8 p-4 bg-manscara-blue bg-opacity-30 rounded-lg">
+                      <div className="mt-8 p-4 bg-blue-50 rounded-lg">
                         <h5 className="font-medium mb-2 text-sm">Product Guarantee</h5>
                         <p className="text-sm text-gray-600">Our products are cruelty-free, vegan, and made with sustainably sourced ingredients. We offer a 30-day satisfaction guarantee.</p>
                       </div>

@@ -1,4 +1,3 @@
-
 import { Button } from "@/components/ui/button";
 import { ShoppingCart, Eye } from "lucide-react";
 import { useCart } from "@/context/CartContext";
@@ -97,7 +96,7 @@ const ProductCard = ({ product, onSelectProduct }: ProductCardProps) => {
           className="w-full h-full object-cover"
         />
         {discountPercentage > 0 && (
-          <span className="absolute top-2 right-2 bg-red-500 text-white text-xs font-bold px-2 py-1 rounded-full">
+          <span className="absolute top-2 left-2 bg-red-500 text-white text-xs font-bold px-2 py-1 rounded-full">
             {discountPercentage}% OFF
           </span>
         )}
