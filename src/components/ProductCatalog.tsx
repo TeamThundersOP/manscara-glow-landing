@@ -182,7 +182,7 @@ const ProductCatalog = ({ className = "" }: ProductCatalogProps) => {
               <Card className="bg-white shadow-md overflow-hidden">
                 <div className="grid grid-cols-1 lg:grid-cols-2 gap-0">
                   {/* Product Image */}
-                  <div className="bg-gradient-to-br from-gray-50 to-gray-100 p-8 flex items-center justify-center relative">
+                  <div className="bg-gradient-to-br from-gray-50 to-gray-100 p-8 flex items-center justify-center relative h-[500px]">
                     {discountPercentage > 0 && (
                       <div className="absolute top-4 left-4">
                         <span className="inline-flex items-center rounded-full bg-red-500 text-white px-3 py-1.5 text-xs font-medium">
@@ -193,7 +193,7 @@ const ProductCatalog = ({ className = "" }: ProductCatalogProps) => {
                     <img 
                       src={selectedProduct.images[0]} 
                       alt={selectedProduct.name} 
-                      className="max-h-96 object-contain hover:scale-105 transition-transform duration-300"
+                      className="w-full h-full object-contain hover:scale-105 transition-transform duration-300"
                     />
                   </div>
                   

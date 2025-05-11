@@ -90,11 +90,11 @@ const ProductCard = ({ product, onSelectProduct }: ProductCardProps) => {
       className="bg-white rounded-lg overflow-hidden shadow-md hover:shadow-lg transition border border-gray-100 cursor-pointer"
       onClick={() => onSelectProduct(product)}
     >
-      <div className="relative">
+      <div className="relative h-64">
         <img 
           src={product.images[0]} 
           alt={product.name} 
-          className="w-full h-64 object-contain p-4"
+          className="w-full h-full object-cover"
         />
         {discountPercentage > 0 && (
           <span className="absolute top-2 right-2 bg-red-500 text-white text-xs font-bold px-2 py-1 rounded-full">
