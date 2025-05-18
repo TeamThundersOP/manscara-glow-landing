@@ -73,16 +73,6 @@ export interface ProfileUpdateResponse {
   };
 }
 
-export interface SendOtpResponse {
-  success: boolean;
-  message: string;
-}
-
-export interface ResetPasswordResponse {
-  success: boolean;
-  message: string;
-}
-
 export const authService = {
   async register(userData: RegisterData) {
     try {
@@ -195,48 +185,6 @@ export const authService = {
       throw new Error(response.data.message || "Failed to update profile");
     } catch (error: any) {
       throw error.response?.data || { message: "Failed to update profile" };
-    }
-  },
-
-  async sendResetOtp(email: string): Promise<SendOtpResponse> {
-    try {
-      // Try to use the actual API endpoint
-      try {
-        const response = await api.post<SendOtpResponse>("/auth/send-otp", { email });
-        return response.data;
-      } catch (apiError) {
-        // API endpoint not yet available, return mock success response
-        console.log("Using mock OTP service - backend endpoint not available yet");
-        return {
-          success: true,
-          message: "OTP sent to email (mock)"
-        };
-      }
-    } catch (error: any) {
-      throw error.response?.data || { success: false, message: "Failed to send OTP" };
-    }
-  },
-
-  async resetPassword(email: string, otp: string, newPassword: string): Promise<ResetPasswordResponse> {
-    try {
-      // Try to use the actual API endpoint
-      try {
-        const response = await api.post<ResetPasswordResponse>("/auth/reset-password", {
-          email,
-          otp,
-          newPassword
-        });
-        return response.data;
-      } catch (apiError) {
-        // API endpoint not yet available, return mock success response
-        console.log("Using mock password reset service - backend endpoint not available yet");
-        return {
-          success: true,
-          message: "Password reset successful (mock)"
-        };
-      }
-    } catch (error: any) {
-      throw error.response?.data || { success: false, message: "Failed to reset password" };
     }
   },
 
