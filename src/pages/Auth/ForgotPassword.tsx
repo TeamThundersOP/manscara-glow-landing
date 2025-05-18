@@ -213,9 +213,13 @@ const ForgotPassword = () => {
                   onChange={(value) => setOtp(value)}
                   render={({ slots }) => (
                     <InputOTPGroup>
-                      {slots.map((slot, i) => (
-                        <InputOTPSlot key={i} {...slot} index={i} />
-                      ))}
+                      {slots && Array.isArray(slots) ? (
+                        slots.map((slot, i) => (
+                          <InputOTPSlot key={i} {...slot} index={i} />
+                        ))
+                      ) : (
+                        <p>Loading input...</p>
+                      )}
                     </InputOTPGroup>
                   )}
                 />
