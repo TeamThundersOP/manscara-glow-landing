@@ -83,7 +83,7 @@ const ForgotPassword = () => {
   };
 
   // Function to verify OTP and proceed to reset password
-  const handleVerifyOtp = (e: React.FormEvent) => {
+  const handleVerifyOtp = async (e: React.FormEvent) => {
     e.preventDefault();
     
     if (otp.length !== 6 || !/^\d+$/.test(otp)) {
@@ -95,8 +95,16 @@ const ForgotPassword = () => {
       return;
     }
     
-    // Navigate to reset password page with email and OTP as URL parameters
-    navigate(`/auth/reset-password?email=${encodeURIComponent(email)}&otp=${otp}`);
+    try {
+      // Navigate to reset password page with email and OTP as URL parameters
+      navigate(`/auth/reset-password?email=${encodeURIComponent(email)}&otp=${otp}`);
+    } catch (error: any) {
+      toast({
+        title: "Navigation Error",
+        description: "Could not proceed to reset password page",
+        variant: "destructive",
+      });
+    }
   };
 
   // Render the appropriate form based on current step
@@ -186,7 +194,14 @@ const ForgotPassword = () => {
               disabled={otp.length !== 6 || isLoading}
               className="w-full bg-manscara-black hover:bg-black"
             >
-              Verify & Continue
+              {isLoading ? (
+                <div className="flex items-center">
+                  <div className="animate-spin rounded-full h-4 w-4 border-b-2 border-white mr-2"></div>
+                  Verifying...
+                </div>
+              ) : (
+                "Verify & Continue"
+              )}
             </Button>
             
             <div className="flex justify-between items-center mt-4 text-sm">
