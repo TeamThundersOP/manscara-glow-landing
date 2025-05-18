@@ -95,7 +95,7 @@ const ForgotPassword = () => {
       return;
     }
     
-    // Redirect to reset password page with email and OTP as URL parameters
+    // Navigate to reset password page with email and OTP as URL parameters
     navigate(`/auth/reset-password?email=${encodeURIComponent(email)}&otp=${otp}`);
   };
 
@@ -162,12 +162,18 @@ const ForgotPassword = () => {
                   onChange={(value) => setOtp(value)}
                   render={({ slots }) => (
                     <InputOTPGroup>
-                      {slots && Array.isArray(slots) ? (
+                      {slots && Array.isArray(slots) && slots.length > 0 ? (
                         slots.map((slot, i) => (
                           <InputOTPSlot key={i} {...slot} index={i} />
                         ))
                       ) : (
-                        <p>Loading input...</p>
+                        <div className="flex gap-2">
+                          {[...Array(6)].map((_, i) => (
+                            <div key={i} className="w-10 h-10 border rounded-md flex items-center justify-center">
+                              {i < otp.length ? otp[i] : ""}
+                            </div>
+                          ))}
+                        </div>
                       )}
                     </InputOTPGroup>
                   )}
