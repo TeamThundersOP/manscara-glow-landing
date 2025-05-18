@@ -11,6 +11,7 @@ import Checkout from "./pages/Checkout";
 import Profile from "./pages/Profile";
 import Login from "./pages/Auth/Login";
 import Register from "./pages/Auth/Register";
+import ForgotPassword from "./pages/Auth/ForgotPassword";
 import NotFound from "./pages/NotFound";
 import ProtectedRoute from "./components/ProtectedRoute";
 
@@ -44,6 +45,7 @@ const App = () => (
             />
             <Route path="/auth/login" element={<Login />} />
             <Route path="/auth/register" element={<Register />} />
+            <Route path="/auth/forgot-password" element={<ForgotPassword />} />
             <Route path="/orders/:orderId" element={
               <ProtectedRoute>
                 <Profile />

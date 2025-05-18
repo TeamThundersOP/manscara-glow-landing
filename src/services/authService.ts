@@ -1,4 +1,3 @@
-
 import api from "./api";
 
 export interface RegisterData {
@@ -71,6 +70,16 @@ export interface ProfileUpdateResponse {
     phone: string;
     profilePicture: string;
   };
+}
+
+export interface SendOtpResponse {
+  success: boolean;
+  message: string;
+}
+
+export interface ResetPasswordResponse {
+  success: boolean;
+  message: string;
 }
 
 export const authService = {
@@ -185,6 +194,28 @@ export const authService = {
       throw new Error(response.data.message || "Failed to update profile");
     } catch (error: any) {
       throw error.response?.data || { message: "Failed to update profile" };
+    }
+  },
+
+  async sendResetOtp(email: string): Promise<SendOtpResponse> {
+    try {
+      const response = await api.post<SendOtpResponse>("/auth/send-otp", { email });
+      return response.data;
+    } catch (error: any) {
+      throw error.response?.data || { success: false, message: "Failed to send OTP" };
+    }
+  },
+
+  async resetPassword(email: string, otp: string, newPassword: string): Promise<ResetPasswordResponse> {
+    try {
+      const response = await api.post<ResetPasswordResponse>("/auth/reset-password", {
+        email,
+        otp,
+        newPassword
+      });
+      return response.data;
+    } catch (error: any) {
+      throw error.response?.data || { success: false, message: "Failed to reset password" };
     }
   },
 
