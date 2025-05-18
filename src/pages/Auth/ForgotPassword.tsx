@@ -96,6 +96,7 @@ const ForgotPassword = () => {
     }
     
     try {
+      setIsLoading(true);
       // Navigate to reset password page with email and OTP as URL parameters
       navigate(`/auth/reset-password?email=${encodeURIComponent(email)}&otp=${otp}`);
     } catch (error: any) {
@@ -104,6 +105,8 @@ const ForgotPassword = () => {
         description: "Could not proceed to reset password page",
         variant: "destructive",
       });
+    } finally {
+      setIsLoading(false);
     }
   };
 
@@ -164,28 +167,19 @@ const ForgotPassword = () => {
                 We've sent a code to {email}
               </p>
               <div className="flex justify-center mb-4">
-                <InputOTP
-                  maxLength={6}
-                  value={otp}
-                  onChange={(value) => setOtp(value)}
-                  render={({ slots }) => (
+                <div className="w-full">
+                  <InputOTP
+                    maxLength={6}
+                    value={otp}
+                    onChange={(value) => setOtp(value)}
+                  >
                     <InputOTPGroup>
-                      {slots && Array.isArray(slots) && slots.length > 0 ? (
-                        slots.map((slot, i) => (
-                          <InputOTPSlot key={i} {...slot} index={i} />
-                        ))
-                      ) : (
-                        <div className="flex gap-2">
-                          {[...Array(6)].map((_, i) => (
-                            <div key={i} className="w-10 h-10 border rounded-md flex items-center justify-center">
-                              {i < otp.length ? otp[i] : ""}
-                            </div>
-                          ))}
-                        </div>
-                      )}
+                      {[...Array(6)].map((_, i) => (
+                        <InputOTPSlot key={i} index={i} />
+                      ))}
                     </InputOTPGroup>
-                  )}
-                />
+                  </InputOTP>
+                </div>
               </div>
             </div>
             

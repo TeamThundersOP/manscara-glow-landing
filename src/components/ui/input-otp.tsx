@@ -46,6 +46,9 @@ const InputOTPSlot = React.forwardRef<
         isActive && "z-10 ring-2 ring-ring ring-offset-background",
         className
       )}
+      // Convert camelCase props to lowercase for DOM elements to avoid React warnings
+      data-active={isActive || undefined}
+      data-fake-caret={hasFakeCaret || undefined}
       {...props}
     >
       {char}
