@@ -177,7 +177,8 @@ const Checkout = () => {
   };
 
   const subtotal = calculateSubtotal();
-  const shippingCost = subtotal > 50 ? 0 : 10;
+  // Changed shipping cost to always be 0 (free)
+  const shippingCost = 0;
   const taxRate = 0.18; // GST 18%
   const tax = subtotal * taxRate;
   const total = subtotal - discountAmount + shippingCost + tax;
@@ -731,10 +732,10 @@ const Checkout = () => {
                               
                               <div className="flex justify-between">
                                 <div>Shipping</div>
-                                <div>₹{Number(shippingCost).toFixed(2)}</div>
+                                <div className="text-green-600">Free</div>
                               </div>
                               <div className="flex justify-between">
-                                <div>GST (18%)</div>
+                                <div>GST (18% Included)</div>
                                 <div>₹{Number(tax).toFixed(2)}</div>
                               </div>
                               <div className="flex justify-between font-semibold text-lg pt-2 border-t">
@@ -940,10 +941,10 @@ const Checkout = () => {
                       
                       <TableRow>
                         <TableCell colSpan={2}>Shipping</TableCell>
-                        <TableCell>₹{Number(shippingCost).toFixed(2)}</TableCell>
+                        <TableCell className="text-green-600">Free</TableCell>
                       </TableRow>
                       <TableRow>
-                        <TableCell colSpan={2}>GST (18%)</TableCell>
+                        <TableCell colSpan={2}>GST (18% Included)</TableCell>
                         <TableCell>₹{Number(tax).toFixed(2)}</TableCell>
                       </TableRow>
                       <TableRow>

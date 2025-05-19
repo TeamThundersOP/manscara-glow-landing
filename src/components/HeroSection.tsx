@@ -27,12 +27,12 @@ const HeroSection = () => {
       {/* Bottom overlay to hide Spline watermark */}
       <div className="absolute bottom-0 left-0 w-full h-16 bg-manscara-offwhite z-10"></div>
       
-      {/* Hero Content - Fixed to always take exactly 50% width */}
+      {/* Hero Content - Fixed to always take exactly 50% width on desktop, full width on mobile */}
       <div className="relative z-20 container h-full flex items-center">
-        <div className="w-1/2">
+        <div className={`${isMobile ? 'w-full' : 'w-1/2'}`}>
           <div className="flex flex-col justify-center">
             <h1 className={`${isMobile ? 'text-3xl' : 'text-4xl md:text-5xl lg:text-6xl'} font-bold leading-tight mb-6`}>
-              <span className="font-serif">Manscara</span> <span className="text-gray-700">Face Wash</span>
+              <span className="font-serif">Manscara</span> <span className={`${isMobile ? 'block' : 'inline'} text-gray-700`}>Face Wash</span>
             </h1>
             <p className={`${isMobile ? 'text-base' : 'text-lg md:text-xl'} text-muted-foreground mb-8`}>
               Advanced formula with natural ingredients to cleanse, refresh, and rejuvenate your skin. Developed by dermatologists specifically for men's skin.
