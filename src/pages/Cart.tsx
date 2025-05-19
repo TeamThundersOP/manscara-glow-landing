@@ -197,8 +197,12 @@ const Cart = () => {
   };
 
   const discountedTotal = cartTotal - discountAmount;
-  const shippingCost = 5.00; // Fixed shipping cost
-  const finalTotal = discountedTotal + shippingCost;
+  // Changed: shipping cost is now always 0 (free)
+  const shippingCost = 0; 
+  // GST is included in the price, but we'll calculate it for display purposes
+  const taxRate = 0.18; // 18% GST
+  const includedTax = (cartTotal * taxRate) / (1 + taxRate); // Calculate the tax that's already included
+  const finalTotal = discountedTotal + shippingCost; // No additional tax is added
 
   // Show loading state
   if (isLoading) {
@@ -427,7 +431,12 @@ const Cart = () => {
               
               <div className="flex justify-between">
                 <span className="text-gray-600">Shipping</span>
-                <span className="font-medium">₹{shippingCost.toFixed(2)}</span>
+                <span className="font-medium text-green-600">Free</span>
+              </div>
+              
+              <div className="flex justify-between">
+                <span className="text-gray-600">GST (Included)</span>
+                <span className="font-medium">₹{includedTax.toFixed(2)}</span>
               </div>
               
               <Separator />
