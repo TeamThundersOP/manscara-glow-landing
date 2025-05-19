@@ -29,23 +29,23 @@ const Index = () => {
       <main>
         <HeroSection />
         
-        <ScrollReveal animation="fade-up" id="catalog-section">
+        <ScrollReveal animation="fade-up" className="section-padding" id="catalog-section">
           <ProductCatalog className="bg-white" />
         </ScrollReveal>
         
-        <ScrollReveal animation="fade-right" id="features-section" delay={200}>
+        <ScrollReveal animation="fade-right" className="section-padding" id="features-section" delay={200}>
           <FeaturesSection className="bg-manscara-offwhite" />
         </ScrollReveal>
         
-        <ScrollReveal animation="fade-left" id="benefits-section" delay={300}>
+        <ScrollReveal animation="fade-left" className="section-padding" id="benefits-section" delay={300}>
           <BenefitsSection className="bg-manscara-beige" />
         </ScrollReveal>
         
-        <ScrollReveal animation="fade-up" id="testimonials-section" delay={400}>
+        <ScrollReveal animation="fade-up" className="section-padding" id="testimonials-section" delay={400}>
           <ReviewsSection className="bg-white" />
         </ScrollReveal>
         
-        <ScrollReveal animation="scale-up" delay={500}>
+        <ScrollReveal animation="scale-up" className="section-padding" delay={500}>
           <CTASection className="bg-manscara-black" />
         </ScrollReveal>
       </main>

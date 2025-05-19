@@ -7,6 +7,7 @@ interface ScrollRevealProps {
   delay?: number;
   threshold?: number;
   className?: string;
+  id?: string; // Added id property to fix the TypeScript error
 }
 
 const animationClasses = {
@@ -23,6 +24,7 @@ const ScrollReveal: React.FC<ScrollRevealProps> = ({
   delay = 0,
   threshold = 0.1,
   className = '',
+  id, // Added id to component props
 }) => {
   const [isVisible, setIsVisible] = useState(false);
   const ref = useRef<HTMLDivElement>(null);
@@ -50,6 +52,7 @@ const ScrollReveal: React.FC<ScrollRevealProps> = ({
   return (
     <div
       ref={ref}
+      id={id} // Pass id to the div element
       className={`${animationClasses[animation]} ${className} ${isVisible ? 'opacity-100 translate-y-0 translate-x-0 scale-100' : ''}`}
       style={{ transitionDelay: `${delay}ms` }}
     >
