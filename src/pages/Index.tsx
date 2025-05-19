@@ -39,7 +39,9 @@ const Index = () => {
         <div id="testimonials-section" className="animate-fade-in" style={{animationDelay: "0.6s"}}>
           <ReviewsSection className="bg-white" />
         </div>
-        <CTASection className="bg-manscara-black animate-fade-in" style={{animationDelay: "0.7s"}} />
+        <div className="animate-fade-in" style={{animationDelay: "0.7s"}}>
+          <CTASection className="bg-manscara-black" />
+        </div>
       </main>
       <Footer />
     </div>
