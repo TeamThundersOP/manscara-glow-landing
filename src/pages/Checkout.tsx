@@ -181,7 +181,8 @@ const Checkout = () => {
   const shippingCost = 0;
   const taxRate = 0.18; // GST 18%
   const tax = subtotal * taxRate;
-  const total = subtotal - discountAmount + shippingCost + tax;
+  // Updated total calculation to remove GST (tax) from the total
+  const total = subtotal - discountAmount + shippingCost;
 
   const handleApplyCoupon = async () => {
     setIsProcessingCoupon(true);
@@ -274,7 +275,7 @@ const Checkout = () => {
     setActiveSection("payment");
     
     if (shippingAddress) {
-      // Create order summary
+      // Create order summary with updated total calculation
       const orderSummary: OrderSummary = {
         shippingAddress,
         billingAddress: null,

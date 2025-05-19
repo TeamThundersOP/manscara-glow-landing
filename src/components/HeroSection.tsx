@@ -29,18 +29,18 @@ const HeroSection = () => {
       
       {/* Hero Content - Fixed to always take exactly 50% width on desktop, full width on mobile */}
       <div className="relative z-20 container h-full flex items-center">
-        <div className={`${isMobile ? 'w-1/2' : 'w-1/2'}`}>
+        <div className="w-1/2 animate-fade-in">
           <div className="flex flex-col justify-center">
-            <h1 className={`${isMobile ? 'text-2xl' : 'text-4xl md:text-5xl lg:text-6xl'} font-bold leading-tight mb-6`}>
+            <h1 className={`${isMobile ? 'text-2xl' : 'text-4xl md:text-5xl lg:text-6xl'} font-bold leading-tight mb-6 animate-enter`}>
               <span className="font-serif">Manscara</span> <span className={`${isMobile ? 'block' : 'inline'} text-gray-700`}>Face Wash</span>
             </h1>
-            <p className={`${isMobile ? 'text-sm' : 'text-lg md:text-xl'} text-muted-foreground mb-8`}>
+            <p className={`${isMobile ? 'text-sm' : 'text-lg md:text-xl'} text-muted-foreground mb-8 animate-fade-in`} style={{animationDelay: "0.2s"}}>
               Advanced formula with natural ingredients to cleanse, refresh, and rejuvenate your skin. Developed by dermatologists specifically for men's skin.
             </p>
-            <div className="flex flex-col sm:flex-row gap-4">
+            <div className="flex flex-col sm:flex-row gap-4 animate-fade-in" style={{animationDelay: "0.4s"}}>
               <Button 
                 size="lg" 
-                className="bg-manscara-black hover:bg-black text-white"
+                className="bg-manscara-black hover:bg-black text-white hover:scale-105 transition-transform duration-300"
                 onClick={scrollToNextSection}
               >
                 Shop Now
@@ -48,39 +48,40 @@ const HeroSection = () => {
               <Button 
                 variant="outline" 
                 size="lg"
+                className="hover:scale-105 transition-transform duration-300"
               >
                 Learn More
               </Button>
             </div>
             
             {/* Modified stats section for mobile - vertical layout on mobile */}
-            <div className="mt-8">
+            <div className="mt-8 animate-fade-in" style={{animationDelay: "0.6s"}}>
               {isMobile ? (
                 <div className="flex flex-col space-y-4">
-                  <div>
+                  <div className="hover:scale-105 transition-transform duration-300">
                     <p className="text-xl font-bold">98%</p>
                     <p className="text-xs text-muted-foreground">Report Cleaner Skin</p>
                   </div>
-                  <div>
+                  <div className="hover:scale-105 transition-transform duration-300">
                     <p className="text-xl font-bold">30+</p>
                     <p className="text-xs text-muted-foreground">Natural Ingredients</p>
                   </div>
-                  <div>
+                  <div className="hover:scale-105 transition-transform duration-300">
                     <p className="text-xl font-bold">24h</p>
                     <p className="text-xs text-muted-foreground">Lasting Effect</p>
                   </div>
                 </div>
               ) : (
                 <div className="grid grid-cols-3 gap-4">
-                  <div>
+                  <div className="hover:scale-105 transition-transform duration-300">
                     <p className="text-2xl md:text-3xl font-bold">98%</p>
                     <p className="text-sm text-muted-foreground">Report Cleaner Skin</p>
                   </div>
-                  <div>
+                  <div className="hover:scale-105 transition-transform duration-300">
                     <p className="text-2xl md:text-3xl font-bold">30+</p>
                     <p className="text-sm text-muted-foreground">Natural Ingredients</p>
                   </div>
-                  <div>
+                  <div className="hover:scale-105 transition-transform duration-300">
                     <p className="text-2xl md:text-3xl font-bold">24h</p>
                     <p className="text-sm text-muted-foreground">Lasting Effect</p>
                   </div>
@@ -92,11 +93,11 @@ const HeroSection = () => {
       </div>
       
       {/* Scroll Down Button */}
-      <div className="absolute bottom-8 left-1/2 transform -translate-x-1/2 z-20">
+      <div className="absolute bottom-8 left-1/2 transform -translate-x-1/2 z-20 animate-bounce">
         <Button 
           variant="ghost" 
           size="icon" 
-          className="rounded-full animate-bounce"
+          className="rounded-full"
           onClick={scrollToNextSection}
         >
           <ArrowDown className="h-6 w-6" />

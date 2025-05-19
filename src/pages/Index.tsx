@@ -25,21 +25,21 @@ const Index = () => {
       </Helmet>
 
       <Navbar />
-      <main>
+      <main className="animate-fade-in">
         <HeroSection />
-        <div id="catalog-section">
+        <div id="catalog-section" className="animate-fade-in" style={{animationDelay: "0.3s"}}>
           <ProductCatalog className="bg-white" />
         </div>
-        <div id="features-section">
+        <div id="features-section" className="animate-fade-in" style={{animationDelay: "0.4s"}}>
           <FeaturesSection className="bg-manscara-offwhite" />
         </div>
-        <div id="benefits-section">
+        <div id="benefits-section" className="animate-fade-in" style={{animationDelay: "0.5s"}}>
           <BenefitsSection className="bg-manscara-beige" />
         </div>
-        <div id="testimonials-section">
+        <div id="testimonials-section" className="animate-fade-in" style={{animationDelay: "0.6s"}}>
           <ReviewsSection className="bg-white" />
         </div>
-        <CTASection className="bg-manscara-black" />
+        <CTASection className="bg-manscara-black animate-fade-in" style={{animationDelay: "0.7s"}} />
       </main>
       <Footer />
     </div>
