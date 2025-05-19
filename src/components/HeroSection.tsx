@@ -2,6 +2,7 @@
 import { Button } from "@/components/ui/button";
 import { ArrowDown } from "lucide-react";
 import { useIsMobile } from "@/hooks/use-mobile";
+import { useCountUp } from "@/hooks/useCountUp";
 
 const HeroSection = () => {
   // Function to scroll to the next section
@@ -13,6 +14,11 @@ const HeroSection = () => {
   };
 
   const isMobile = useIsMobile();
+  
+  // CountUp hooks for statistics
+  const cleanerSkinCount = useCountUp({ end: 98, suffix: '%' });
+  const ingredientsCount = useCountUp({ end: 30, suffix: '+' });
+  const lastingEffectCount = useCountUp({ end: 24, suffix: 'h' });
 
   return (
     <section className="relative h-[90vh] sm:h-screen overflow-hidden pt-16 md:pt-20">
@@ -54,35 +60,35 @@ const HeroSection = () => {
               </Button>
             </div>
             
-            {/* Modified stats section for mobile - vertical layout on mobile */}
+            {/* Modified stats section with number counting animation */}
             <div className="mt-8 animate-fade-in" style={{animationDelay: "0.6s"}}>
               {isMobile ? (
                 <div className="flex flex-col space-y-4">
-                  <div className="hover:scale-105 transition-transform duration-300">
-                    <p className="text-xl font-bold">98%</p>
+                  <div ref={cleanerSkinCount.ref} className="hover:scale-105 transition-transform duration-300">
+                    <p className="text-xl font-bold">{cleanerSkinCount.value}</p>
                     <p className="text-xs text-muted-foreground">Report Cleaner Skin</p>
                   </div>
-                  <div className="hover:scale-105 transition-transform duration-300">
-                    <p className="text-xl font-bold">30+</p>
+                  <div ref={ingredientsCount.ref} className="hover:scale-105 transition-transform duration-300">
+                    <p className="text-xl font-bold">{ingredientsCount.value}</p>
                     <p className="text-xs text-muted-foreground">Natural Ingredients</p>
                   </div>
-                  <div className="hover:scale-105 transition-transform duration-300">
-                    <p className="text-xl font-bold">24h</p>
+                  <div ref={lastingEffectCount.ref} className="hover:scale-105 transition-transform duration-300">
+                    <p className="text-xl font-bold">{lastingEffectCount.value}</p>
                     <p className="text-xs text-muted-foreground">Lasting Effect</p>
                   </div>
                 </div>
               ) : (
                 <div className="grid grid-cols-3 gap-4">
-                  <div className="hover:scale-105 transition-transform duration-300">
-                    <p className="text-2xl md:text-3xl font-bold">98%</p>
+                  <div ref={cleanerSkinCount.ref} className="hover:scale-105 transition-transform duration-300">
+                    <p className="text-2xl md:text-3xl font-bold">{cleanerSkinCount.value}</p>
                     <p className="text-sm text-muted-foreground">Report Cleaner Skin</p>
                   </div>
-                  <div className="hover:scale-105 transition-transform duration-300">
-                    <p className="text-2xl md:text-3xl font-bold">30+</p>
+                  <div ref={ingredientsCount.ref} className="hover:scale-105 transition-transform duration-300">
+                    <p className="text-2xl md:text-3xl font-bold">{ingredientsCount.value}</p>
                     <p className="text-sm text-muted-foreground">Natural Ingredients</p>
                   </div>
-                  <div className="hover:scale-105 transition-transform duration-300">
-                    <p className="text-2xl md:text-3xl font-bold">24h</p>
+                  <div ref={lastingEffectCount.ref} className="hover:scale-105 transition-transform duration-300">
+                    <p className="text-2xl md:text-3xl font-bold">{lastingEffectCount.value}</p>
                     <p className="text-sm text-muted-foreground">Lasting Effect</p>
                   </div>
                 </div>
@@ -92,12 +98,12 @@ const HeroSection = () => {
         </div>
       </div>
       
-      {/* Scroll Down Button */}
+      {/* Scroll Down Button - with pulse animation */}
       <div className="absolute bottom-8 left-1/2 transform -translate-x-1/2 z-20 animate-bounce">
         <Button 
           variant="ghost" 
           size="icon" 
-          className="rounded-full"
+          className="rounded-full hover:bg-white/20 transition-colors"
           onClick={scrollToNextSection}
         >
           <ArrowDown className="h-6 w-6" />

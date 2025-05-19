@@ -8,6 +8,7 @@ import BenefitsSection from "@/components/BenefitsSection";
 import ReviewsSection from "@/components/ReviewsSection";
 import CTASection from "@/components/CTASection";
 import Footer from "@/components/Footer";
+import ScrollReveal from "@/components/ScrollReveal";
 
 const Index = () => {
   return (
@@ -25,23 +26,28 @@ const Index = () => {
       </Helmet>
 
       <Navbar />
-      <main className="animate-fade-in">
+      <main>
         <HeroSection />
-        <div id="catalog-section" className="animate-fade-in" style={{animationDelay: "0.3s"}}>
+        
+        <ScrollReveal animation="fade-up" id="catalog-section">
           <ProductCatalog className="bg-white" />
-        </div>
-        <div id="features-section" className="animate-fade-in" style={{animationDelay: "0.4s"}}>
+        </ScrollReveal>
+        
+        <ScrollReveal animation="fade-right" id="features-section" delay={200}>
           <FeaturesSection className="bg-manscara-offwhite" />
-        </div>
-        <div id="benefits-section" className="animate-fade-in" style={{animationDelay: "0.5s"}}>
+        </ScrollReveal>
+        
+        <ScrollReveal animation="fade-left" id="benefits-section" delay={300}>
           <BenefitsSection className="bg-manscara-beige" />
-        </div>
-        <div id="testimonials-section" className="animate-fade-in" style={{animationDelay: "0.6s"}}>
+        </ScrollReveal>
+        
+        <ScrollReveal animation="fade-up" id="testimonials-section" delay={400}>
           <ReviewsSection className="bg-white" />
-        </div>
-        <div className="animate-fade-in" style={{animationDelay: "0.7s"}}>
+        </ScrollReveal>
+        
+        <ScrollReveal animation="scale-up" delay={500}>
           <CTASection className="bg-manscara-black" />
-        </div>
+        </ScrollReveal>
       </main>
       <Footer />
     </div>
