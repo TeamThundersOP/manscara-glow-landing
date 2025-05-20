@@ -38,6 +38,11 @@ const HeroSection = () => {
         <div className="absolute bottom-0 left-0 w-full h-6 bg-manscara-offwhite z-20"></div>
       )}
       
+      {/* New div positioned at the right bottom */}
+      <div className="absolute bottom-8 right-8 z-20 bg-manscara-offwhite p-4 rounded-lg shadow-md">
+        <p className="text-sm font-medium">Manscara</p>
+      </div>
+      
       {/* Hero Content - Fixed to always take exactly 50% width on desktop, 50% on mobile */}
       <div className="relative z-20 container h-full flex items-center">
         <div className={`${isMobile ? 'w-1/2' : 'w-1/2'} animate-fade-in`}>
