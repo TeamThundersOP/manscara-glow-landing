@@ -21,7 +21,7 @@ const HeroSection = () => {
   const lastingEffectCount = useCountUp({ end: 24, suffix: 'h' });
 
   return (
-    <section className={`relative ${isMobile ? 'h-[45vh]' : 'h-[90vh] sm:h-screen'} overflow-hidden pt-16 md:pt-20`}>
+    <section className={`relative ${isMobile ? 'h-[45vh]' : 'h-[80vh] sm:h-screen'} overflow-hidden pt-10 md:pt-16`}>
       {/* Spline 3D Background using the provided embed code */}
       <div className="absolute inset-0 w-full h-full z-0">
         {/* Using dangerouslySetInnerHTML to properly render the custom element */}
@@ -37,13 +37,13 @@ const HeroSection = () => {
       <div className="relative z-20 container h-full flex items-center">
         <div className={`${isMobile ? 'w-full' : 'w-1/2'} animate-fade-in`}>
           <div className="flex flex-col justify-center">
-            <h1 className={`${isMobile ? 'text-xl' : 'text-4xl md:text-5xl lg:text-6xl'} font-bold leading-tight mb-6 animate-enter`}>
+            <h1 className={`${isMobile ? 'text-xl' : 'text-5xl md:text-6xl lg:text-7xl'} font-bold leading-tight mb-6 animate-enter`}>
               <span className="font-serif">Manscara</span> <span className={`${isMobile ? 'block' : 'inline'} text-gray-700`}>Face Wash</span>
             </h1>
             
             {/* Description paragraph - hidden on mobile */}
             {!isMobile && (
-              <p className="text-lg md:text-xl text-muted-foreground mb-8 animate-fade-in" style={{animationDelay: "0.2s"}}>
+              <p className="text-lg md:text-xl text-muted-foreground mb-8 animate-fade-in max-w-md" style={{animationDelay: "0.2s"}}>
                 Advanced formula with natural ingredients to cleanse, refresh, and rejuvenate your skin. Developed by dermatologists specifically for men's skin.
               </p>
             )}
@@ -67,7 +67,7 @@ const HeroSection = () => {
             
             {/* Stats section with horizontal layout on mobile */}
             <div className="mt-6 animate-fade-in" style={{animationDelay: "0.6s"}}>
-              <div className="grid grid-cols-3 gap-2">
+              <div className="grid grid-cols-3 gap-2 max-w-sm">
                 <div ref={cleanerSkinCount.ref} className="hover:scale-105 transition-transform duration-300">
                   <p className={`${isMobile ? 'text-lg' : 'text-2xl md:text-3xl'} font-bold`}>{cleanerSkinCount.value}</p>
                   <p className={`${isMobile ? 'text-xs' : 'text-sm'} text-muted-foreground`}>Cleaner Skin</p>
