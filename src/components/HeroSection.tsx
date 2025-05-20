@@ -30,12 +30,12 @@ const HeroSection = () => {
         }} className="w-full h-full" />
       </div>
       
-      {/* Bottom overlay to hide Spline watermark */}
-      <div className="absolute bottom-0 left-0 w-full h-16 bg-manscara-offwhite z-10"></div>
+      {/* Bottom overlay to hide Spline watermark - reduced height for mobile */}
+      <div className={`absolute bottom-0 left-0 w-full ${isMobile ? 'h-8' : 'h-16'} bg-manscara-offwhite z-10`}></div>
       
-      {/* Hero Content - Fixed to always take exactly 50% width on desktop, full width on mobile */}
+      {/* Hero Content - Fixed to always take exactly 50% width on desktop, 50% on mobile */}
       <div className="relative z-20 container h-full flex items-center">
-        <div className={`${isMobile ? 'w-full' : 'w-1/2'} animate-fade-in`}>
+        <div className={`${isMobile ? 'w-1/2' : 'w-1/2'} animate-fade-in`}>
           <div className="flex flex-col justify-center">
             <h1 className={`${isMobile ? 'text-xl' : 'text-5xl md:text-6xl lg:text-7xl'} font-bold leading-tight mb-6 animate-enter`}>
               <span className="font-serif">Manscara</span> <span className={`${isMobile ? 'block' : 'inline'} text-gray-700`}>Face Wash</span>
