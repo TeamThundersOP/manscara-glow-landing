@@ -21,7 +21,7 @@ const HeroSection = () => {
   const lastingEffectCount = useCountUp({ end: 24, suffix: 'h' });
 
   return (
-    <section className="relative h-[90vh] sm:h-screen overflow-hidden pt-16 md:pt-20">
+    <section className={`relative ${isMobile ? 'h-[45vh]' : 'h-[90vh] sm:h-screen'} overflow-hidden pt-16 md:pt-20`}>
       {/* Spline 3D Background using the provided embed code */}
       <div className="absolute inset-0 w-full h-full z-0">
         {/* Using dangerouslySetInnerHTML to properly render the custom element */}
@@ -35,17 +35,22 @@ const HeroSection = () => {
       
       {/* Hero Content - Fixed to always take exactly 50% width on desktop, full width on mobile */}
       <div className="relative z-20 container h-full flex items-center">
-        <div className="w-1/2 animate-fade-in">
+        <div className={`${isMobile ? 'w-full' : 'w-1/2'} animate-fade-in`}>
           <div className="flex flex-col justify-center">
-            <h1 className={`${isMobile ? 'text-2xl' : 'text-4xl md:text-5xl lg:text-6xl'} font-bold leading-tight mb-6 animate-enter`}>
+            <h1 className={`${isMobile ? 'text-xl' : 'text-4xl md:text-5xl lg:text-6xl'} font-bold leading-tight mb-6 animate-enter`}>
               <span className="font-serif">Manscara</span> <span className={`${isMobile ? 'block' : 'inline'} text-gray-700`}>Face Wash</span>
             </h1>
-            <p className={`${isMobile ? 'text-sm' : 'text-lg md:text-xl'} text-muted-foreground mb-8 animate-fade-in`} style={{animationDelay: "0.2s"}}>
-              Advanced formula with natural ingredients to cleanse, refresh, and rejuvenate your skin. Developed by dermatologists specifically for men's skin.
-            </p>
+            
+            {/* Description paragraph - hidden on mobile */}
+            {!isMobile && (
+              <p className="text-lg md:text-xl text-muted-foreground mb-8 animate-fade-in" style={{animationDelay: "0.2s"}}>
+                Advanced formula with natural ingredients to cleanse, refresh, and rejuvenate your skin. Developed by dermatologists specifically for men's skin.
+              </p>
+            )}
+            
             <div className="flex flex-col sm:flex-row gap-4 animate-fade-in" style={{animationDelay: "0.4s"}}>
               <Button 
-                size="lg" 
+                size={isMobile ? "default" : "lg"} 
                 className="bg-manscara-black hover:bg-black text-white hover:scale-105 transition-transform duration-300"
                 onClick={scrollToNextSection}
               >
@@ -53,46 +58,29 @@ const HeroSection = () => {
               </Button>
               <Button 
                 variant="outline" 
-                size="lg"
+                size={isMobile ? "default" : "lg"}
                 className="hover:scale-105 transition-transform duration-300"
               >
                 Learn More
               </Button>
             </div>
             
-            {/* Modified stats section with number counting animation */}
-            <div className="mt-8 animate-fade-in" style={{animationDelay: "0.6s"}}>
-              {isMobile ? (
-                <div className="flex flex-col space-y-4">
-                  <div ref={cleanerSkinCount.ref} className="hover:scale-105 transition-transform duration-300">
-                    <p className="text-xl font-bold">{cleanerSkinCount.value}</p>
-                    <p className="text-xs text-muted-foreground">Report Cleaner Skin</p>
-                  </div>
-                  <div ref={ingredientsCount.ref} className="hover:scale-105 transition-transform duration-300">
-                    <p className="text-xl font-bold">{ingredientsCount.value}</p>
-                    <p className="text-xs text-muted-foreground">Natural Ingredients</p>
-                  </div>
-                  <div ref={lastingEffectCount.ref} className="hover:scale-105 transition-transform duration-300">
-                    <p className="text-xl font-bold">{lastingEffectCount.value}</p>
-                    <p className="text-xs text-muted-foreground">Lasting Effect</p>
-                  </div>
+            {/* Stats section with horizontal layout on mobile */}
+            <div className="mt-6 animate-fade-in" style={{animationDelay: "0.6s"}}>
+              <div className="grid grid-cols-3 gap-2">
+                <div ref={cleanerSkinCount.ref} className="hover:scale-105 transition-transform duration-300">
+                  <p className={`${isMobile ? 'text-lg' : 'text-2xl md:text-3xl'} font-bold`}>{cleanerSkinCount.value}</p>
+                  <p className={`${isMobile ? 'text-xs' : 'text-sm'} text-muted-foreground`}>Cleaner Skin</p>
                 </div>
-              ) : (
-                <div className="grid grid-cols-3 gap-4">
-                  <div ref={cleanerSkinCount.ref} className="hover:scale-105 transition-transform duration-300">
-                    <p className="text-2xl md:text-3xl font-bold">{cleanerSkinCount.value}</p>
-                    <p className="text-sm text-muted-foreground">Report Cleaner Skin</p>
-                  </div>
-                  <div ref={ingredientsCount.ref} className="hover:scale-105 transition-transform duration-300">
-                    <p className="text-2xl md:text-3xl font-bold">{ingredientsCount.value}</p>
-                    <p className="text-sm text-muted-foreground">Natural Ingredients</p>
-                  </div>
-                  <div ref={lastingEffectCount.ref} className="hover:scale-105 transition-transform duration-300">
-                    <p className="text-2xl md:text-3xl font-bold">{lastingEffectCount.value}</p>
-                    <p className="text-sm text-muted-foreground">Lasting Effect</p>
-                  </div>
+                <div ref={ingredientsCount.ref} className="hover:scale-105 transition-transform duration-300">
+                  <p className={`${isMobile ? 'text-lg' : 'text-2xl md:text-3xl'} font-bold`}>{ingredientsCount.value}</p>
+                  <p className={`${isMobile ? 'text-xs' : 'text-sm'} text-muted-foreground`}>Ingredients</p>
                 </div>
-              )}
+                <div ref={lastingEffectCount.ref} className="hover:scale-105 transition-transform duration-300">
+                  <p className={`${isMobile ? 'text-lg' : 'text-2xl md:text-3xl'} font-bold`}>{lastingEffectCount.value}</p>
+                  <p className={`${isMobile ? 'text-xs' : 'text-sm'} text-muted-foreground`}>Effect</p>
+                </div>
+              </div>
             </div>
           </div>
         </div>
