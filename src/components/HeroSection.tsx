@@ -38,9 +38,9 @@ const HeroSection = () => {
         <div className="absolute bottom-0 right-0 w-full h-12 bg-manscara-offwhite z-20"></div>
       )}
       
-      {/* Specific overlay for the bottom right corner where Spline logo appears */}
+      {/* Specific overlay for the bottom right corner where Spline logo appears - modified for full width and using banner bg color */}
       {isMobile && (
-        <div className="absolute bottom-0 right-0 w-32 h-20 bg-manscara-offwhite z-30"></div>
+        <div className="absolute bottom-0 right-0 w-full h-20 bg-gradient-to-b from-manscara-offwhite to-manscara-blue/30 z-30"></div>
       )}
       
       {/* Hero Content - Fixed to always take exactly 50% width on desktop, 50% on mobile */}
