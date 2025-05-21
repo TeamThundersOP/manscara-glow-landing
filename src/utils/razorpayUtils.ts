@@ -1,10 +1,10 @@
 
 // Note: In a production environment, API keys should be stored securely in environment variables
 // For demo purposes, we're using them directly in the code
-const RAZORPAY_KEY_ID = 'rzp_test_hNhZwfzooHOyOk';
+const RAZORPAY_KEY_ID = 'rzp_live_rIoUdRQlcYrX4Y';
 // SECRET should never be exposed in frontend code in production
 // This should only be used in a backend environment
-const RAZORPAY_SECRET_KEY = 'LUKMtdHd3XX1kYJwUppeauhj';
+const RAZORPAY_SECRET_KEY = 'z7jOOaAACegGIR7xQFFbOmrm';
 
 // Define types for Razorpay
 declare global {
