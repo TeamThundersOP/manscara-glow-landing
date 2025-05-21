@@ -31,11 +31,16 @@ const HeroSection = () => {
       </div>
       
       {/* Bottom overlay to hide Spline watermark - enhanced for mobile */}
-      <div className={`absolute bottom-0 left-0 w-full ${isMobile ? 'h-12' : 'h-16'} bg-manscara-offwhite z-10`}></div>
+      <div className={`absolute bottom-0 left-0 w-full ${isMobile ? 'h-16' : 'h-16'} bg-manscara-offwhite z-10`}></div>
       
       {/* Additional overlay specifically for mobile to cover Spline logo better */}
       {isMobile && (
-        <div className="absolute bottom-0 left-0 w-full h-6 bg-manscara-offwhite z-20"></div>
+        <div className="absolute bottom-0 right-0 w-full h-12 bg-manscara-offwhite z-20"></div>
+      )}
+      
+      {/* Specific overlay for the bottom right corner where Spline logo appears */}
+      {isMobile && (
+        <div className="absolute bottom-0 right-0 w-32 h-20 bg-manscara-offwhite z-30"></div>
       )}
       
       {/* Hero Content - Fixed to always take exactly 50% width on desktop, 50% on mobile */}
