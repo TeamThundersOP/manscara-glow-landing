@@ -65,22 +65,43 @@ const HeroSection = () => {
               </Button>
             </div>
             
-            {/* Stats section with horizontal layout on mobile */}
+            {/* Stats section with adjusted layout for mobile (2+1) */}
             <div className="mt-6 animate-fade-in" style={{animationDelay: "0.6s"}}>
-              <div className="grid grid-cols-3 gap-2 max-w-sm">
-                <div ref={cleanerSkinCount.ref} className="hover:scale-105 transition-transform duration-300">
-                  <p className={`${isMobile ? 'text-lg' : 'text-2xl md:text-3xl'} font-bold`}>{cleanerSkinCount.value}</p>
-                  <p className={`${isMobile ? 'text-xs' : 'text-sm'} text-muted-foreground`}>Cleaner Skin</p>
+              {isMobile ? (
+                <div className="flex flex-col gap-4 max-w-sm">
+                  <div className="grid grid-cols-2 gap-4">
+                    <div ref={cleanerSkinCount.ref} className="hover:scale-105 transition-transform duration-300">
+                      <p className="text-lg font-bold">{cleanerSkinCount.value}</p>
+                      <p className="text-xs text-muted-foreground">Cleaner Skin</p>
+                    </div>
+                    <div ref={ingredientsCount.ref} className="hover:scale-105 transition-transform duration-300">
+                      <p className="text-lg font-bold">{ingredientsCount.value}</p>
+                      <p className="text-xs text-muted-foreground">Ingredients</p>
+                    </div>
+                  </div>
+                  <div className="flex justify-center">
+                    <div ref={lastingEffectCount.ref} className="hover:scale-105 transition-transform duration-300">
+                      <p className="text-lg font-bold">{lastingEffectCount.value}</p>
+                      <p className="text-xs text-muted-foreground">Effect</p>
+                    </div>
+                  </div>
                 </div>
-                <div ref={ingredientsCount.ref} className="hover:scale-105 transition-transform duration-300">
-                  <p className={`${isMobile ? 'text-lg' : 'text-2xl md:text-3xl'} font-bold`}>{ingredientsCount.value}</p>
-                  <p className={`${isMobile ? 'text-xs' : 'text-sm'} text-muted-foreground`}>Ingredients</p>
+              ) : (
+                <div className="grid grid-cols-3 gap-2 max-w-sm">
+                  <div ref={cleanerSkinCount.ref} className="hover:scale-105 transition-transform duration-300">
+                    <p className="text-2xl md:text-3xl font-bold">{cleanerSkinCount.value}</p>
+                    <p className="text-sm text-muted-foreground">Cleaner Skin</p>
+                  </div>
+                  <div ref={ingredientsCount.ref} className="hover:scale-105 transition-transform duration-300">
+                    <p className="text-2xl md:text-3xl font-bold">{ingredientsCount.value}</p>
+                    <p className="text-sm text-muted-foreground">Ingredients</p>
+                  </div>
+                  <div ref={lastingEffectCount.ref} className="hover:scale-105 transition-transform duration-300">
+                    <p className="text-2xl md:text-3xl font-bold">{lastingEffectCount.value}</p>
+                    <p className="text-sm text-muted-foreground">Effect</p>
+                  </div>
                 </div>
-                <div ref={lastingEffectCount.ref} className="hover:scale-105 transition-transform duration-300">
-                  <p className={`${isMobile ? 'text-lg' : 'text-2xl md:text-3xl'} font-bold`}>{lastingEffectCount.value}</p>
-                  <p className={`${isMobile ? 'text-xs' : 'text-sm'} text-muted-foreground`}>Effect</p>
-                </div>
-              </div>
+              )}
             </div>
           </div>
         </div>

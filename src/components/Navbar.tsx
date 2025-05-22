@@ -170,13 +170,13 @@ const Navbar = () => {
 
         {/* Right side: Cart, Account */}
         <div className="flex items-center space-x-4">
-          {/* Cart Icon */}
+          {/* Cart Icon - adjusted for better mobile spacing */}
           {!isCheckoutPage && !isAuthPage && (
-            <Link to="/cart" className="relative">
-              <Button variant="ghost" size="icon" className="rounded-full">
-                <ShoppingCart className="h-5 w-5" />
+            <Link to="/cart" className="relative mr-2">
+              <Button variant="ghost" size="sm" className="rounded-full p-1 sm:p-2">
+                <ShoppingCart className="h-4 w-4 sm:h-5 sm:w-5" />
                 {cartCount > 0 && (
-                  <span className="absolute -top-2 -right-2 bg-manscara-black text-white text-xs rounded-full w-5 h-5 flex items-center justify-center">
+                  <span className="absolute -top-2 -right-2 bg-manscara-black text-white text-xs rounded-full w-4 h-4 sm:w-5 sm:h-5 flex items-center justify-center">
                     {cartCount}
                   </span>
                 )}
