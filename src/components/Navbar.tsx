@@ -1,4 +1,3 @@
-
 import { useState, useEffect } from "react";
 import { Link, useLocation } from "react-router-dom";
 import { Button } from "@/components/ui/button";
@@ -13,7 +12,7 @@ import {
 } from "@/components/ui/dropdown-menu";
 import { UserData } from "@/types/user";
 import { useCart } from "@/context/CartContext";
-import { User, ShoppingCart, Home, Package, LogOut, MapPin, CreditCard, Heart, Menu, X } from "lucide-react";
+import { User, ShoppingCart, Home, Package, LogOut, MapPin, CreditCard, Heart, Menu, X, ShoppingBag, Info } from "lucide-react";
 import authService from "@/services/authService";
 import { useToast } from "@/hooks/use-toast";
 import { useIsMobile } from "@/hooks/use-mobile";
@@ -114,7 +113,7 @@ const Navbar = () => {
       }`}
     >
       <div className="container flex items-center justify-between">
-        {/* Logo */}
+        {/* Logo - Mobile shows only logo, desktop shows logo and text */}
         <Link to="/" className="flex items-center space-x-2">
           <img
             src="/lovable-uploads/619af646-e154-42b0-91d9-8b80937da07b.png"
@@ -123,7 +122,7 @@ const Navbar = () => {
             width="40"
             height="40"
           />
-          <span className="text-2xl font-serif font-bold">Manscara</span>
+          <span className="text-2xl font-serif font-bold hidden md:inline">Manscara</span>
         </Link>
 
         {/* Desktop Navigation */}
@@ -172,7 +171,7 @@ const Navbar = () => {
         <div className="flex items-center space-x-4">
           {/* Cart Icon - adjusted for better mobile spacing */}
           {!isCheckoutPage && !isAuthPage && (
-            <Link to="/cart" className="relative mr-2">
+            <Link to="/cart" className="relative">
               <Button variant="ghost" size="sm" className="rounded-full p-1 sm:p-2">
                 <ShoppingCart className="h-4 w-4 sm:h-5 sm:w-5" />
                 {cartCount > 0 && (

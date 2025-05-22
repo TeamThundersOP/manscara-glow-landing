@@ -1,6 +1,6 @@
 
 import { Button } from "@/components/ui/button";
-import { ArrowDown } from "lucide-react";
+import { ArrowDown, ShoppingBag, Info } from "lucide-react";
 import { useIsMobile } from "@/hooks/use-mobile";
 import { useCountUp } from "@/hooks/useCountUp";
 
@@ -35,7 +35,7 @@ const HeroSection = () => {
       
       {/* Hero Content - Fixed to always take exactly 50% width on desktop, 50% on mobile */}
       <div className="relative z-20 container h-full flex items-center">
-        <div className={`${isMobile ? 'w-1/2' : 'w-1/2'} animate-fade-in`}>
+        <div className={`${isMobile ? 'w-1/2 pt-10' : 'w-1/2'} animate-fade-in`}>
           <div className="flex flex-col justify-center">
             <h1 className={`${isMobile ? 'text-xl' : 'text-5xl md:text-6xl lg:text-7xl'} font-bold leading-tight mb-6 animate-enter`}>
               <span className="font-serif">Manscara</span> <span className={`${isMobile ? 'block' : 'inline'} text-gray-700`}>Face Wash</span>
@@ -48,21 +48,43 @@ const HeroSection = () => {
               </p>
             )}
             
-            <div className="flex flex-col sm:flex-row gap-4 animate-fade-in" style={{animationDelay: "0.4s"}}>
-              <Button 
-                size={isMobile ? "default" : "lg"} 
-                className="bg-manscara-black hover:bg-black text-white hover:scale-105 transition-transform duration-300"
-                onClick={scrollToNextSection}
-              >
-                Shop Now
-              </Button>
-              <Button 
-                variant="outline" 
-                size={isMobile ? "default" : "lg"}
-                className="hover:scale-105 transition-transform duration-300"
-              >
-                Learn More
-              </Button>
+            {/* Mobile: Icon buttons side by side, Desktop: Text buttons */}
+            <div className={`flex gap-4 animate-fade-in ${isMobile ? 'flex-row' : 'flex-col sm:flex-row'}`} style={{animationDelay: "0.4s"}}>
+              {isMobile ? (
+                <>
+                  <Button 
+                    size="icon" 
+                    className="bg-manscara-black hover:bg-black text-white hover:scale-105 transition-transform duration-300"
+                    onClick={scrollToNextSection}
+                  >
+                    <ShoppingBag className="h-5 w-5" />
+                  </Button>
+                  <Button 
+                    variant="outline" 
+                    size="icon"
+                    className="hover:scale-105 transition-transform duration-300"
+                  >
+                    <Info className="h-5 w-5" />
+                  </Button>
+                </>
+              ) : (
+                <>
+                  <Button 
+                    size="lg" 
+                    className="bg-manscara-black hover:bg-black text-white hover:scale-105 transition-transform duration-300"
+                    onClick={scrollToNextSection}
+                  >
+                    Shop Now
+                  </Button>
+                  <Button 
+                    variant="outline" 
+                    size="lg"
+                    className="hover:scale-105 transition-transform duration-300"
+                  >
+                    Learn More
+                  </Button>
+                </>
+              )}
             </div>
             
             {/* Stats section with adjusted layout for mobile (2+1) */}
@@ -70,17 +92,17 @@ const HeroSection = () => {
               {isMobile ? (
                 <div className="flex flex-col gap-4 max-w-sm">
                   <div className="grid grid-cols-2 gap-4">
-                    <div ref={cleanerSkinCount.ref} className="hover:scale-105 transition-transform duration-300">
+                    <div ref={cleanerSkinCount.ref} className="hover:scale-105 transition-transform duration-300 text-left">
                       <p className="text-lg font-bold">{cleanerSkinCount.value}</p>
                       <p className="text-xs text-muted-foreground">Cleaner Skin</p>
                     </div>
-                    <div ref={ingredientsCount.ref} className="hover:scale-105 transition-transform duration-300">
+                    <div ref={ingredientsCount.ref} className="hover:scale-105 transition-transform duration-300 text-left">
                       <p className="text-lg font-bold">{ingredientsCount.value}</p>
                       <p className="text-xs text-muted-foreground">Ingredients</p>
                     </div>
                   </div>
-                  <div className="flex justify-center">
-                    <div ref={lastingEffectCount.ref} className="hover:scale-105 transition-transform duration-300">
+                  <div className="flex justify-start">
+                    <div ref={lastingEffectCount.ref} className="hover:scale-105 transition-transform duration-300 text-left">
                       <p className="text-lg font-bold">{lastingEffectCount.value}</p>
                       <p className="text-xs text-muted-foreground">Effect</p>
                     </div>
