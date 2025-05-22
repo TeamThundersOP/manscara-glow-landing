@@ -31,17 +31,35 @@ const HeroSection = () => {
       </div>
       
       {/* Bottom overlay to hide Spline watermark - enhanced for mobile */}
-      <div className={`absolute bottom-0 left-0 w-full ${isMobile ? 'h-12' : 'h-16'} bg-manscara-offwhite z-10`}></div>
+      <div className={`absolute bottom-0 left-0 w-full ${isMobile ? 'h-20' : 'h-16'} bg-manscara-offwhite z-10`}></div>
       
       {/* Additional overlay specifically for mobile to cover Spline logo better */}
       {isMobile && (
-        <div className="absolute bottom-0 left-0 w-full h-6 bg-manscara-offwhite z-20"></div>
+        <div className="absolute bottom-0 left-0 w-full h-24 bg-manscara-offwhite z-30"></div>
       )}
       
       {/* Hero Content - Fixed to always take exactly 50% width on desktop, 50% on mobile */}
       <div className="relative z-20 container h-full flex items-center">
         <div className={`${isMobile ? 'w-1/2' : 'w-1/2'} animate-fade-in`}>
           <div className="flex flex-col justify-center">
+            {/* Stats section moved to top as requested */}
+            <div className="mb-6 animate-fade-in" style={{animationDelay: "0.6s"}}>
+              <div className="grid grid-cols-3 gap-2 max-w-sm">
+                <div ref={cleanerSkinCount.ref} className="hover:scale-105 transition-transform duration-300">
+                  <p className={`${isMobile ? 'text-lg' : 'text-2xl md:text-3xl'} font-bold`}>{cleanerSkinCount.value}</p>
+                  <p className={`${isMobile ? 'text-xs' : 'text-sm'} text-muted-foreground`}>Cleaner Skin</p>
+                </div>
+                <div ref={ingredientsCount.ref} className="hover:scale-105 transition-transform duration-300">
+                  <p className={`${isMobile ? 'text-lg' : 'text-2xl md:text-3xl'} font-bold`}>{ingredientsCount.value}</p>
+                  <p className={`${isMobile ? 'text-xs' : 'text-sm'} text-muted-foreground`}>Ingredients</p>
+                </div>
+                <div ref={lastingEffectCount.ref} className="hover:scale-105 transition-transform duration-300">
+                  <p className={`${isMobile ? 'text-lg' : 'text-2xl md:text-3xl'} font-bold`}>{lastingEffectCount.value}</p>
+                  <p className={`${isMobile ? 'text-xs' : 'text-sm'} text-muted-foreground`}>Effect</p>
+                </div>
+              </div>
+            </div>
+            
             <h1 className={`${isMobile ? 'text-xl' : 'text-5xl md:text-6xl lg:text-7xl'} font-bold leading-tight mb-6 animate-enter`}>
               <span className="font-serif">Manscara</span> <span className={`${isMobile ? 'block' : 'inline'} text-gray-700`}>Face Wash</span>
             </h1>
@@ -68,24 +86,6 @@ const HeroSection = () => {
               >
                 Learn More
               </Button>
-            </div>
-            
-            {/* Stats section with horizontal layout on mobile */}
-            <div className="mt-6 animate-fade-in" style={{animationDelay: "0.6s"}}>
-              <div className="grid grid-cols-3 gap-2 max-w-sm">
-                <div ref={cleanerSkinCount.ref} className="hover:scale-105 transition-transform duration-300">
-                  <p className={`${isMobile ? 'text-lg' : 'text-2xl md:text-3xl'} font-bold`}>{cleanerSkinCount.value}</p>
-                  <p className={`${isMobile ? 'text-xs' : 'text-sm'} text-muted-foreground`}>Cleaner Skin</p>
-                </div>
-                <div ref={ingredientsCount.ref} className="hover:scale-105 transition-transform duration-300">
-                  <p className={`${isMobile ? 'text-lg' : 'text-2xl md:text-3xl'} font-bold`}>{ingredientsCount.value}</p>
-                  <p className={`${isMobile ? 'text-xs' : 'text-sm'} text-muted-foreground`}>Ingredients</p>
-                </div>
-                <div ref={lastingEffectCount.ref} className="hover:scale-105 transition-transform duration-300">
-                  <p className={`${isMobile ? 'text-lg' : 'text-2xl md:text-3xl'} font-bold`}>{lastingEffectCount.value}</p>
-                  <p className={`${isMobile ? 'text-xs' : 'text-sm'} text-muted-foreground`}>Effect</p>
-                </div>
-              </div>
             </div>
           </div>
         </div>
