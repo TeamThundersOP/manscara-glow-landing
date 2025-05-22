@@ -33,7 +33,7 @@ const HeroSection = () => {
       {/* Bottom overlay to hide Spline watermark - enhanced for mobile */}
       <div className={`absolute bottom-0 left-0 w-full ${isMobile ? 'h-20' : 'h-16'} bg-manscara-offwhite z-10`}></div>
       
-      {/* Additional overlay specifically for mobile to cover Spline logo better */}
+      {/* Additional overlay specifically for mobile to cover Spline logo better - updated to match hero section bg */}
       {isMobile && (
         <div className="absolute bottom-0 left-0 w-full h-24 bg-manscara-offwhite z-30"></div>
       )}
