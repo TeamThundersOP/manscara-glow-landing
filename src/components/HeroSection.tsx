@@ -21,7 +21,7 @@ const HeroSection = () => {
   const lastingEffectCount = useCountUp({ end: 24, suffix: 'h' });
 
   return (
-    <section className={`relative ${isMobile ? 'h-[45vh]' : 'h-[80vh] sm:h-screen'} overflow-hidden pt-10 md:pt-16`}>
+    <section className={`relative ${isMobile ? 'h-[45vh]' : 'h-[80vh] sm:h-screen'} overflow-hidden pt-10 md:pt-16 bg-manscara-offwhite`}>
       {/* Spline 3D Background using the provided embed code */}
       <div className="absolute inset-0 w-full h-full z-0">
         {/* Using dangerouslySetInnerHTML to properly render the custom element */}
