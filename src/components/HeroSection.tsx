@@ -30,8 +30,8 @@ const HeroSection = () => {
         }} className="w-full h-full" />
       </div>
       
-      {/* Bottom overlay to hide Spline watermark - reduced height for mobile */}
-      <div className={`absolute bottom-0 left-0 w-full ${isMobile ? 'h-8' : 'h-16'} bg-manscara-offwhite z-10`}></div>
+      {/* Bottom overlay to hide Spline watermark - with the specific HSL color */}
+      <div className={`absolute bottom-0 left-0 w-full ${isMobile ? 'h-14' : 'h-16'} z-10`} style={{ backgroundColor: 'hsl(30deg 74.07% 89.41%)' }}></div>
       
       {/* Hero Content - Fixed to always take exactly 50% width on desktop, 50% on mobile */}
       <div className="relative z-20 container h-full flex items-center">
