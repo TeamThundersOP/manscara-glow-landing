@@ -100,18 +100,18 @@ const HeroSection = () => {
             {/* Stats section with adjusted layout for mobile (all in one row) */}
             <div className="mt-6 animate-fade-in" style={{animationDelay: "0.6s"}}>
               {isMobile ? (
-                <div className="grid grid-cols-3 gap-1 max-w-xs">
+                <div className="grid grid-cols-3 gap-2 max-w-xs">
                   <div ref={cleanerSkinCount.ref} className="hover:scale-105 transition-transform duration-300 text-left">
-                    <p className="text-xs font-bold">{cleanerSkinCount.value}</p>
-                    <p className="text-[10px] text-muted-foreground">Cleaner</p>
+                    <p className="text-sm font-bold">{cleanerSkinCount.value}</p>
+                    <p className="text-xs text-muted-foreground">Cleaner</p>
                   </div>
                   <div ref={ingredientsCount.ref} className="hover:scale-105 transition-transform duration-300 text-left">
-                    <p className="text-xs font-bold">{ingredientsCount.value}</p>
-                    <p className="text-[10px] text-muted-foreground">Ingredients</p>
+                    <p className="text-sm font-bold">{ingredientsCount.value}</p>
+                    <p className="text-xs text-muted-foreground">Ingredients</p>
                   </div>
                   <div ref={lastingEffectCount.ref} className="hover:scale-105 transition-transform duration-300 text-left">
-                    <p className="text-xs font-bold">{lastingEffectCount.value}</p>
-                    <p className="text-[10px] text-muted-foreground">Effect</p>
+                    <p className="text-sm font-bold">{lastingEffectCount.value}</p>
+                    <p className="text-xs text-muted-foreground">Effect</p>
                   </div>
                 </div>
               ) : (
