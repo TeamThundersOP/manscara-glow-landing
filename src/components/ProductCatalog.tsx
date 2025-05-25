@@ -333,14 +333,12 @@ const ProductCatalog = ({ className = "" }: ProductCatalogProps) => {
                     <div className="bg-white p-6 rounded-lg shadow-sm">
                       <h4 className="font-serif font-medium mb-4 text-lg text-manscara-black inline-block border-b-2 border-manscara-black pb-1">Ingredients</h4>
                       <div className="text-gray-600 leading-relaxed space-y-2">
-                        <div className="grid grid-cols-2 gap-x-4 gap-y-2">
-                          {selectedProduct.ingredients.map((ingredient, i) => (
-                            <div key={i} className="flex items-center py-1.5 border-b border-gray-100 last:border-0">
-                              <span className="w-2 h-2 bg-manscara-black rounded-full mr-3 flex-shrink-0"></span>
-                              <span className="text-sm">{ingredient}</span>
-                            </div>
-                          ))}
-                        </div>
+                        {selectedProduct.ingredients.map((ingredient, i) => (
+                          <div key={i} className="flex items-center py-1.5 border-b border-gray-100 last:border-0">
+                            <span className="w-2 h-2 bg-manscara-black rounded-full mr-3"></span>
+                            <span>{ingredient}</span>
+                          </div>
+                        ))}
                       </div>
 
                       <div className="mt-8 p-4 bg-manscara-blue bg-opacity-30 rounded-lg">
