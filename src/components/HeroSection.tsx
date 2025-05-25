@@ -97,25 +97,21 @@ const HeroSection = () => {
               )}
             </div>
             
-            {/* Stats section with adjusted layout for mobile (2+1) */}
+            {/* Stats section with adjusted layout for mobile (all in one row) */}
             <div className="mt-6 animate-fade-in" style={{animationDelay: "0.6s"}}>
               {isMobile ? (
-                <div className="flex flex-col gap-4 max-w-sm">
-                  <div className="grid grid-cols-2 gap-4">
-                    <div ref={cleanerSkinCount.ref} className="hover:scale-105 transition-transform duration-300 text-left">
-                      <p className="text-lg font-bold">{cleanerSkinCount.value}</p>
-                      <p className="text-xs text-muted-foreground">Cleaner Skin</p>
-                    </div>
-                    <div ref={ingredientsCount.ref} className="hover:scale-105 transition-transform duration-300 text-left">
-                      <p className="text-lg font-bold">{ingredientsCount.value}</p>
-                      <p className="text-xs text-muted-foreground">Ingredients</p>
-                    </div>
+                <div className="grid grid-cols-3 gap-2 max-w-xs">
+                  <div ref={cleanerSkinCount.ref} className="hover:scale-105 transition-transform duration-300 text-left">
+                    <p className="text-sm font-bold">{cleanerSkinCount.value}</p>
+                    <p className="text-xs text-muted-foreground">Cleaner</p>
                   </div>
-                  <div className="flex justify-start">
-                    <div ref={lastingEffectCount.ref} className="hover:scale-105 transition-transform duration-300 text-left">
-                      <p className="text-lg font-bold">{lastingEffectCount.value}</p>
-                      <p className="text-xs text-muted-foreground">Effect</p>
-                    </div>
+                  <div ref={ingredientsCount.ref} className="hover:scale-105 transition-transform duration-300 text-left">
+                    <p className="text-sm font-bold">{ingredientsCount.value}</p>
+                    <p className="text-xs text-muted-foreground">Ingredients</p>
+                  </div>
+                  <div ref={lastingEffectCount.ref} className="hover:scale-105 transition-transform duration-300 text-left">
+                    <p className="text-sm font-bold">{lastingEffectCount.value}</p>
+                    <p className="text-xs text-muted-foreground">Effect</p>
                   </div>
                 </div>
               ) : (
