@@ -107,7 +107,9 @@ const HeroSection = () => {
                   </div>
                   <div ref={ingredientsCount.ref} className="hover:scale-105 transition-transform duration-300 text-left">
                     <p className="text-sm font-bold">{ingredientsCount.value}</p>
-                    <p className="text-xs text-muted-foreground">Ingredients</p>
+                    <p className="text-xs text-muted-foreground leading-tight">
+                      Ingre-<br />dients
+                    </p>
                   </div>
                   <div ref={lastingEffectCount.ref} className="hover:scale-105 transition-transform duration-300 text-left">
                     <p className="text-sm font-bold">{lastingEffectCount.value}</p>
