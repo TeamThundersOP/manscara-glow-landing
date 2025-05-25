@@ -13,6 +13,14 @@ const HeroSection = () => {
     }
   };
 
+  // Function to scroll to features section for info button
+  const scrollToFeaturesSection = () => {
+    const featuresSection = document.getElementById('features-section');
+    if (featuresSection) {
+      featuresSection.scrollIntoView({ behavior: 'smooth' });
+    }
+  };
+
   const isMobile = useIsMobile();
   
   // CountUp hooks for statistics
@@ -53,16 +61,17 @@ const HeroSection = () => {
               {isMobile ? (
                 <>
                   <Button 
-                    size="icon" 
-                    className="bg-manscara-black hover:bg-black text-white hover:scale-105 transition-transform duration-300"
+                    className="bg-manscara-black hover:bg-black text-white hover:scale-105 transition-transform duration-300 flex items-center gap-2 px-3 py-2"
                     onClick={scrollToNextSection}
                   >
-                    <ShoppingBag className="h-5 w-5" />
+                    <ShoppingBag className="h-4 w-4" />
+                    <span className="text-sm">Shop</span>
                   </Button>
                   <Button 
                     variant="outline" 
                     size="icon"
                     className="hover:scale-105 transition-transform duration-300"
+                    onClick={scrollToFeaturesSection}
                   >
                     <Info className="h-5 w-5" />
                   </Button>
@@ -80,6 +89,7 @@ const HeroSection = () => {
                     variant="outline" 
                     size="lg"
                     className="hover:scale-105 transition-transform duration-300"
+                    onClick={scrollToFeaturesSection}
                   >
                     Learn More
                   </Button>
